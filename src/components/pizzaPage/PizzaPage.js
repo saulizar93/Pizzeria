@@ -5,7 +5,7 @@ export default function PizzaPage(){
     const [pizza, setPizza] = useState([]);
 
     useEffect( ()=> {
-        fetch('http://localhost:8080/pizza/getPizza')
+        fetch('http://localhost:8080/pizzas')
         .then( (response) => response.json())
         .then( (data)=> {
             setPizza(data);
@@ -15,6 +15,7 @@ export default function PizzaPage(){
     }, [])
     return(
         <div>
+            <h1 style={{textAlign:'center'}}> List of Pizzas </h1>
             <table className='table'>
                 <thead>
                     <tr>
@@ -28,7 +29,7 @@ export default function PizzaPage(){
                 <tbody>
                     {pizza.map( (pizz) =>{
                         return(
-                            <tr key={pizz._id}>
+                            <tr key={pizz._id.hexString}>
                                 <td>{pizz.height}</td>
                                 <td>{pizz.type}</td>
                                 <td>{pizz.toppings}</td>
