@@ -33,7 +33,7 @@ export default function CustomerPage(){
                 <tbody>
                     {customers.map( (customer)=>{
                         return(
-                            <tr key={customer._id}>
+                            <tr key={customer._id.hexString}>
                                 <td>{customer.email}</td>
                                 <td>{customer.phoneNum}</td>
                                 <td>{customer.address.streetAddress}</td>

@@ -30,7 +30,7 @@ export default function OrderPage(){
                 <tbody>
                     {orders.map( (order)=>{
                         return(
-                            <tr key={order._id}>
+                            <tr key={order._id.hexString}>
                                 <td>{order.customerIdString}</td>
                                 <td>{order.pizzas[0].type}</td>
                                 <td>{order.pizzas[0].toppings}</td>

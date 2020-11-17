@@ -29,7 +29,7 @@ export default function PizzaPage(){
                 <tbody>
                     {pizza.map( (pizz) =>{
                         return(
-                            <tr key={pizz._id}>
+                            <tr key={pizz._id.hexString}>
                                 <td>{pizz.height}</td>
                                 <td>{pizz.type}</td>
                                 <td>{pizz.toppings}</td>
