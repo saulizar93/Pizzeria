@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Form, FormGroup, Input, Label, Col, Card, Container, Button, CardTitle} from 'reactstrap'
-import { formatString } from '../util/StringFormat';
 import MultiSelect from 'react-multi-select-component'
 
 export const AddPizza = ()=>{
@@ -43,17 +42,38 @@ export const AddPizza = ()=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        let formData = new FormData();
-        formData.append("height", height);
-        formData.append("type", type);
         let tops = selectedToppings.map(t=>{
             return t.value;
         })
-        formData.append("toppings", tops);
-        formData.append("cost", cost);
-        formData.append("size", size);
-        //SUBMIT
+        let jsonBody = {
+            "height": height,
+            "type": type,
+            "toppings": tops,
+            "cost": cost,
+            "size": size
+        }
+
+        console.log(jsonBody)
+        
+
+        fetch('http://localhost:8080/pizzas',{
+            method: "POST",
+            body: JSON.stringify(jsonBody),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {res.json();
+        }).then(data => {return data})
+        .catch((e)=>{return e});
     }
+
+    const handleSizeChange = (e)=>{
+        setSize(e.target.value);
+    }
+    const handleTypeChange = (e)=>{
+        setType(e.target.value);
+    }
+
     return (
     <Card style={{marginBottom: "30px"}}>
         <CardTitle tag="h4">Add New Pizza</CardTitle>
@@ -62,26 +82,26 @@ export const AddPizza = ()=>{
                 <FormGroup row>
                     <Label for="typeSelect" sm={2}>Crust Type</Label>
                     <Col sm={10}>
-                        <Input type="select" name="type" id="typeSelect">
-                            <option>Classic</option>
-                            <option>Deep Dish</option>
-                            <option>Gluten Free</option>
-                            <option>Thin Crust</option>
-                            <option>Sicilian</option>
-                            <option>Stuffed</option>
+                        <Input type="select" name="type" id="typeSelect" value={type} onChange={handleTypeChange}>
+                            <option value="CLASSIC">Classic</option>
+                            <option value="DEEP_DISH">Deep Dish</option>
+                            <option value="SICILIAN">Gluten Free</option>
+                            <option value="THIN_CRUST">Thin Crust</option>
+                            <option value="SICILIAN">Sicilian</option>
+                            <option value="STUFFED">Stuffed</option>
                         </Input>
                     </Col>
                 </FormGroup>
                 <FormGroup row>
                     <Label for="sizeSelect" sm={2}>Size</Label>
                     <Col sm={10}>
-                        <Input type="select" name="size" id="sizeSelect">
-                            <option>Slice</option>
-                            <option>Personal</option>
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Large</option>
-                            <option>Extra Large</option>
+                        <Input type="select" name="size" id="sizeSelect" value={size} onChange={handleSizeChange}>
+                            <option value="SLICE">Slice</option>
+                            <option value="PERSONAL">Personal</option>
+                            <option value="SMALL">Small</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="LARGE">Large</option>
+                            <option value="XLARGE">Extra Large</option>
                         </Input>
                     </Col>
                 </FormGroup>

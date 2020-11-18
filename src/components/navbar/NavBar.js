@@ -16,7 +16,7 @@ export default function NavBar(){
                 <Link to="/getCustomers" style={buttonStyle}><Button color="info">Customers</Button></Link>
             </Col>
             <Col style={{textAlight: "right"}}>
-                {/* <Button color="success">Switch to Employee</Button> */}
+                <Button color="success">Switch to Employee</Button>
             </Col>
         </Row>
         </Container>
