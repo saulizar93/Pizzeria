@@ -6,6 +6,7 @@ import HomePage from './components/homePage/HomePage';
 import PizzaPage from './components/pizzaPage/PizzaPage';
 import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
+import NavBar from './components/navbar/NavBar';
 
 function App() {
   return (
@@ -25,12 +26,16 @@ function App() {
     //     </a>
     //   </header>
     // </div>
+    <div>
+    <NavBar></NavBar>
     <Switch>
       <Route path='/' component={HomePage} exact />
       <Route path='/getPizzas' component={PizzaPage} />
       <Route path='/getCustomers' component={CustomerPage} />
       <Route path='/getOrders' component={OrderPage} />
     </Switch>
+    
+    </div>
   );
 }
 

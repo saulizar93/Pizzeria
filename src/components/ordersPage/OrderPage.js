@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import {Table, Container} from 'reactstrap';
 
 export default function OrderPage(){
 
@@ -14,9 +15,9 @@ export default function OrderPage(){
         .catch( (err)=> console.log(err));
     },[])
     return(
-        <div>
+        <Container>
             <h1 style={{textAlign:'center'}}> Pizza Orders </h1>
-            <table className='table'>
+            <Table hover bordered className='table'>
                 <thead>
                     <tr>
                         <th>Customer ID</th>
@@ -41,7 +42,7 @@ export default function OrderPage(){
                         )
                     })}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        </Container>
     )
 }

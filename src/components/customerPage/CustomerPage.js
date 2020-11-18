@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import {Table, Container} from 'reactstrap';
 
 export default function CustomerPage(){
 
@@ -14,9 +15,9 @@ export default function CustomerPage(){
         .catch( (err)=> console.log(err));
     },[])
     return(
-        <div>
+        <Container>
             <h1 style={{textAlign:'center'}}> List of Customers </h1>
-            <table className='table'>
+            <Table hover bordered className='table'>
                 <thead>
                     <tr>
                         <th>Email</th>
@@ -47,7 +48,7 @@ export default function CustomerPage(){
                         )
                     })}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        </Container>
     )
 }

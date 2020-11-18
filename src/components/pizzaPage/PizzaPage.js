@@ -1,4 +1,8 @@
 import React, { useState, useEffect} from 'react';
+import { Container, Table } from 'reactstrap';
+import { PriceFormat } from '../util/PriceFormat';
+import { formatString } from '../util/StringFormat';
+import { AddPizza } from './AddPizza'
 
 export default function PizzaPage(){
 
@@ -9,14 +13,14 @@ export default function PizzaPage(){
         .then( (response) => response.json())
         .then( (data)=> {
             setPizza(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch( (err)=> console.log(err));
     }, [])
     return(
-        <div>
+        <Container>
             <h1 style={{textAlign:'center'}}> List of Pizzas </h1>
-            <table className='table'>
+            <Table bordered hover className='table'>
                 <thead>
                     <tr>
                         <th>Height</th>
@@ -31,16 +35,18 @@ export default function PizzaPage(){
                         return(
                             <tr key={pizz._id.hexString}>
                                 <td>{pizz.height}</td>
-                                <td>{pizz.type}</td>
-                                <td>{pizz.toppings}</td>
-                                <td>{pizz.cost}</td>
-                                <td>{pizz.size}</td>
+                                <td>{formatString(pizz.type)}</td>
+                                <td>{formatString(pizz.toppings.toString())}</td>
+                                <td><PriceFormat data={pizz.cost}/></td>
+                                <td>{formatString(pizz.size)}</td>
                             </tr>
                         )
                     })}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+
+            <AddPizza />
+        </Container>
 
     )
 }
