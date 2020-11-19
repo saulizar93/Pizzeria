@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Container, Table } from 'reactstrap';
-import { PriceFormat } from '../util/PriceFormat';
+import { priceFormat } from '../util/PriceFormat';
 import { formatString } from '../util/StringFormat';
 import { AddPizza } from './AddPizza'
 
@@ -37,7 +37,7 @@ export default function PizzaPage(){
                                 <td>{pizz.height}</td>
                                 <td>{formatString(pizz.type)}</td>
                                 <td>{formatString(pizz.toppings.toString())}</td>
-                                <td><PriceFormat data={pizz.cost}/></td>
+                                <td>{priceFormat(pizz.cost)}</td>
                                 <td>{formatString(pizz.size)}</td>
                             </tr>
                         )

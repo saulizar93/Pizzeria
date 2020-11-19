@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
+import { priceFormat } from '../util/PriceFormat';
+import {formatString} from '../util/StringFormat'
 
 export default function OrderPage(){
 
@@ -32,12 +34,12 @@ export default function OrderPage(){
                     {orders.map( (order)=>{
                         return(
                             <tr key={order._id.hexString}>
-                                <td>{order.customerIdString}</td>
-                                <td>{order.pizzas[0].type}</td>
-                                <td>{order.pizzas[0].toppings}</td>
+                                <td>{formatString(order.customerIdString)}</td>
+                                <td>{formatString(order.pizzas[0].type)}</td>
+                                <td>{formatString(order.pizzas[0].toppings.toString())}</td>
                                 <td>{order.pizzas[0].height}</td>
-                                <td>{order.pizzas[0].size}</td>
-                                <td>{order.pizzas[0].cost}</td>
+                                <td>{formatString(order.pizzas[0].size)}</td>
+                                <td>{priceFormat(order.pizzas[0].cost)}</td>
                             </tr>
                         )
                     })}

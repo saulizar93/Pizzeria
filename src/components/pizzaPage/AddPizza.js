@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {Form, FormGroup, Input, Label, Col, Card, Container, Button, CardTitle} from 'reactstrap'
 import MultiSelect from 'react-multi-select-component'
+import { calculateCost } from '../util/calculateCost'
+import { priceFormat } from '../util/PriceFormat'
 
 export const AddPizza = ()=>{
     const toppings = [
@@ -16,7 +18,7 @@ export const AddPizza = ()=>{
         {label: "Crouton", value: "CROUTON"},
         {label: "Garlic", value: "GARLIC"},
         {label: "Ham", value: "HAM"},
-        {label: "Jalepeno", value: "JALAPENO"},
+        {label: "Jalapeño", value: "JALAPENO"},
         {label: "Lettuce", value: "LETTUCE"},
         {label: "Meatball", value: "MEATBALL"},
         {label: "Mushroom", value: "MUSHROOM"},
@@ -35,21 +37,20 @@ export const AddPizza = ()=>{
 
 
     const [selectedToppings, setSelectedToppings] = useState([]);
-    const [size, setSize] = useState("");
-    const [type, setType] = useState("");
-    const [height, setHeight] = useState(0);
-    const [cost, setCost] = useState(0);
+    const [size, setSize] = useState("SLICE");
+    const [type, setType] = useState("CLASSIC");
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         let tops = selectedToppings.map(t=>{
             return t.value;
         })
+        let height = heightCheck(type);
         let jsonBody = {
             "height": height,
             "type": type,
             "toppings": tops,
-            "cost": cost,
+            "cost": price,
             "size": size
         }
 
@@ -74,6 +75,27 @@ export const AddPizza = ()=>{
         setType(e.target.value);
     }
 
+    const heightCheck = (type)=>{
+        switch(type){
+            case "CLASSIC":
+                return 0.75
+            case "THIN_CRUST":
+                return 0.5
+            case "DEEP_DISH":
+                return 3
+            case "SICILIAN":
+                return 1.5
+            case "STUFFED":
+                return 2
+            case "GLUTEN_FREE":
+                return 0.5
+            default:
+                return 0
+        }
+    }
+
+    let price = calculateCost(type, size, selectedToppings);
+
     return (
     <Card style={{marginBottom: "30px"}}>
         <CardTitle tag="h4">Add New Pizza</CardTitle>
@@ -85,7 +107,7 @@ export const AddPizza = ()=>{
                         <Input type="select" name="type" id="typeSelect" value={type} onChange={handleTypeChange}>
                             <option value="CLASSIC">Classic</option>
                             <option value="DEEP_DISH">Deep Dish</option>
-                            <option value="SICILIAN">Gluten Free</option>
+                            <option value="GLUTEN_FREE">Gluten Free</option>
                             <option value="THIN_CRUST">Thin Crust</option>
                             <option value="SICILIAN">Sicilian</option>
                             <option value="STUFFED">Stuffed</option>
@@ -114,7 +136,7 @@ export const AddPizza = ()=>{
                 <FormGroup row>
                     <Label for="cost" sm={2}>Cost</Label>
                     <Col sm={10}>
-                        <Input type="number" name="cost" id="cost" disabled></Input>
+                        <Input type="text" name="cost" id="cost" disabled value={priceFormat(price)}></Input>
                     </Col>
                 </FormGroup>
                 <FormGroup row>

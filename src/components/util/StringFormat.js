@@ -1,4 +1,5 @@
 export const formatString = (t)=>{
+    if(t){
     let newString = t;
     let words = []
     if(t.indexOf('_')>=0){
@@ -20,5 +21,7 @@ export const formatString = (t)=>{
         })
         if(formattedWords) newString = formattedWords.map(w =>{return `${w} `});
     }
-    return newString;
+    return newString; 
+    }
+    return ""
 }

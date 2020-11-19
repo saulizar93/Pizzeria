@@ -1,4 +1,3 @@
-export const PriceFormat = (props)=>{
-    let price = props.data;
-    return `$${price.toFixed(2)}`
+export const priceFormat = (data)=>{
+    return `$${data.toFixed(2)}`
 }
