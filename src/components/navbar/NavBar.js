@@ -9,9 +9,10 @@ export default function NavBar(){
     return (
         <Container style={{paddingTop: "10px"}}>
         <Row>
-            <Col />
-            <Col style={{textAlign: "center"}}>
-                <Link to="/getPizzas" style={buttonStyle}><Button color="info">Pizzas</Button></Link>            
+           
+            <Col style={{textAlign: "left"}}>
+                <Link to="/getPizzas" style={buttonStyle}><Button color="info">Pizzas</Button></Link> 
+                <Link to="/findPizza" style={buttonStyle}><Button color="info">Find Pizza</Button></Link>           
                 <Link to="/getOrders" style={buttonStyle}><Button color="info">Orders</Button></Link>
                 <Link to="/getCustomers" style={buttonStyle}><Button color="info">Customers</Button></Link>
             </Col>

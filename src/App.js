@@ -4,6 +4,7 @@ import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 import HomePage from './components/homePage/HomePage';
 import PizzaPage from './components/pizzaPage/PizzaPage';
+import FilterPizza from './components/pizzaPage/FilterPizza';
 import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
 import NavBar from './components/navbar/NavBar';
@@ -33,6 +34,7 @@ function App() {
       <Route path='/getPizzas' component={PizzaPage} />
       <Route path='/getCustomers' component={CustomerPage} />
       <Route path='/getOrders' component={OrderPage} />
+      <Route path='/findPizza' component={FilterPizza}/>
     </Switch>
     
     </div>

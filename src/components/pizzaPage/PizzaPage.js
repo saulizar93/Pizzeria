@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { Container, Table } from 'reactstrap';
 import { priceFormat } from '../util/PriceFormat';
 import { formatString } from '../util/StringFormat';
-import { AddPizza } from './AddPizza'
+import { AddPizza } from './AddPizza';
 
 export default function PizzaPage(){
 
