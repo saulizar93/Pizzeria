@@ -41,7 +41,7 @@ export default function CustomerPage(){
                                 <td>{customer.address.city}</td>
                                 <td>{customer.address.state}</td>
                                 <td>{customer.address.postal}</td>
-                                <td>{customer.card.cardNumber}</td>
+                                {/* <td>{customer.card.cardNumber}</td> */}
                                 <td>{customer.favorite}</td>
                             </tr>
 
