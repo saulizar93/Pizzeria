@@ -4,7 +4,9 @@ import MultiSelect from 'react-multi-select-component'
 import { calculateCost } from '../util/calculateCost'
 import { priceFormat } from '../util/PriceFormat'
 
+
 export const AddPizza = ()=>{
+    
     const toppings = [
         {label: "Anchovy", value: "ANCHOVY"},
         {label: "Artichoke", value: "ARTICHOKE"},
@@ -34,8 +36,6 @@ export const AddPizza = ()=>{
         {label: "Spinach", value: "SPINACH"},
         {label: "Tomato", value: "TOMATO"}
     ]
-
-
     const [selectedToppings, setSelectedToppings] = useState([]);
     const [size, setSize] = useState("SLICE");
     const [type, setType] = useState("CLASSIC");
