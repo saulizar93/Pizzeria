@@ -53,5 +53,5 @@ export const calculateCost = (type, size, toppings)=>{
         default:
             break;
     }
-    return costMatrix[typeIndex][sizeIndex] + (toppings.length * sizeIndex);
+    return costMatrix[typeIndex][sizeIndex] + (toppings.length * (sizeIndex*0.5));
 }
