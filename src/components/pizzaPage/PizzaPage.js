@@ -16,7 +16,7 @@ export default function PizzaPage(){
             //console.log(data);
         })
         .catch( (err)=> console.log(err));
-    }, [])
+    }, [pizza])
     return(
         <Container>
             <h1 style={{textAlign:'center'}}> List of Pizzas </h1>
