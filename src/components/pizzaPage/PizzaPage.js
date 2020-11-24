@@ -19,6 +19,7 @@ export default function PizzaPage(){
     }, [pizza])
     return(
         <Container>
+            <AddPizza />
             <h1 style={{textAlign:'center'}}> List of Pizzas </h1>
             <Table bordered hover className='table'>
                 <thead>
@@ -45,7 +46,7 @@ export default function PizzaPage(){
                 </tbody>
             </Table>
 
-            <AddPizza />
+
         </Container>
 
     )

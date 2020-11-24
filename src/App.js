@@ -7,7 +7,8 @@ import PizzaPage from './components/pizzaPage/PizzaPage';
 import FilterPizza from './components/pizzaPage/FilterPizza';
 import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
-import NavBar from './components/navbar/NavBar';
+//import NavBar from './components/navbar/NavBar';
+import AppBar from './components/navbar/AppBar';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
     //   </header>
     // </div>
     <div>
-    <NavBar></NavBar>
+    {/* <NavBar></NavBar> */}
+    <AppBar/>
     <Switch>
       <Route path='/' component={HomePage} exact />
       <Route path='/getPizzas' component={PizzaPage} />
