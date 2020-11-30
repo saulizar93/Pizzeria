@@ -21,6 +21,10 @@ import Grid from '@material-ui/core/Grid';
 import logo3 from '../../img/SausagePizza.jpg';
 import logo4 from '../../img/HawaiianPizza.jpg';
 import logo5 from '../../img/VegetarianPizza.jpg';
+import logo6 from '../../img/MeatLoversPizza.jpg';
+import logo7 from '../../img/BBQChickenPizza.jpg';
+import logo8 from '../../img/BuffaloChickenPizza.jpg';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,483 +66,509 @@ export default function PizzaCards() {
 
   return (
     <div>
-    <Grid container>
+      <Grid container>
 
-    <Grid>
-        
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Extra cheese pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Pepperoni Pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo2}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+        <Grid item md={3}>
 
-    </Grid>
-    <Grid>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Extra cheese pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Sausage Pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo3}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Pepperoni Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo2}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
         </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+        </Grid>
+
+        <Grid item md={3}>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Hawaiian Pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo4}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Sausage Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo3}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
         </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    </Grid>
-    <Grid>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Vegetarian Pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo5}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Hawaiian Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo4}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+        </Grid>
+
+        <Grid item md={3}>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Extra cheese pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo2}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Vegetarian Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo5}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
         </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    </Grid>
-    <Grid>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Extra cheese pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo2}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            C
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Meat Lovers Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo6}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+        </Grid>
+        <Grid item md={3}>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Extra cheese pizza"
-        subheader="November 26, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={logo2}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Start your pizza journey with this delicious pizza.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>How we make it:</Typography>
-          <Typography paragraph>
-            We put our italian job into making this pizza.
-          </Typography>
-          <Typography paragraph>
-            We let it cook for over 3 hours in the over at low temperatures. No rushing.
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    </Grid>
-    </Grid>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="BBQ Chicken Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo7}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+
+          <Button>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    C
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Buffalo Chicken Pizza"
+                subheader="November 26, 2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={logo8}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Start your pizza journey with this delicious pizza.
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>How we make it:</Typography>
+                  <Typography paragraph>
+                    We put our italian job into making this pizza.
+                  </Typography>
+                  <Typography paragraph>
+                    We let it cook for over 3 hours in the over at low temperatures. No rushing.
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }
