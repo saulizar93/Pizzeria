@@ -1,7 +1,9 @@
+import CardsPage from './CardsPage';
+
 export default function HomePage(){
     return(
         <div style={{textAlign: "center"}}>
-            <h1>Welcome to Pizzeria App</h1>
+            <CardsPage/>
             <img src={require("../../img/pizza.png")} alt=""/>
         </div>
     )
