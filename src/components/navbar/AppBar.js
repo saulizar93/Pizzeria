@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
       flexGrow: 1,
+      color: 'black'
     },
     backgroundColor: {
         background: 'orange',
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         flex:1,
         width: 80,
         height: 80,
-        //resizeMode:'contain'
+        resizeMode:'contain'
     }
   }));
   
@@ -43,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"><MenuIcon /></IconButton>
                 <img className={classes.image} src={logo} alt='Pizza'/>
                 {/* <Typography variant="h6" className={classes.title}></Typography> */}
-                <NavBar/>
-                
-                <Button color="inherit">Switch to Employee</Button>
+                <NavBar/> 
+                <Button color="inherit" style={{color:'black'}}><b>LogIn</b></Button>
             </Toolbar>
         </AppBar>
       </div>

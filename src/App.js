@@ -9,6 +9,7 @@ import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
 //import NavBar from './components/navbar/NavBar';
 import AppBar from './components/navbar/AppBar';
+import backgroundImage from './img/PizzaBackground.png';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <div>
+    <div style={{backgroundImage: `url(${backgroundImage})`}}>
     {/* <NavBar></NavBar> */}
     <AppBar/>
     <Switch>
@@ -38,7 +39,6 @@ function App() {
       <Route path='/getOrders' component={OrderPage} />
       <Route path='/findPizza' component={FilterPizza}/>
     </Switch>
-    
     </div>
   );
 }
