@@ -18,14 +18,13 @@ export default function OrderPage(){
     },[])
     return(
         <Container>
-            <h1 style={{textAlign:'center'}}> Pizza Orders </h1>
+            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> Pizza Orders </h1>
             <Table hover bordered className='table'>
                 <thead>
-                    <tr>
-                        <th>Customer ID</th>
+                    <tr style={{backgroundColor:'red'}}> 
+                        <th>Customer Name</th>
                         <th>Pizza Type</th>
                         <th>Toppings</th>
-                        <th>Height</th>
                         <th>Size</th>
                         <th>Cost</th>
                     </tr>
@@ -33,11 +32,10 @@ export default function OrderPage(){
                 <tbody>
                     {orders.map( (order)=>{
                         return(
-                            <tr key={order._id.hexString}>
-                                <td>{formatString(order.customerIdString)}</td>
+                            <tr key={order._id.hexString} style={{backgroundColor:'orange'}}>
+                                <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
                                 <td>{formatString(order.pizzas[0].type)}</td>
                                 <td>{formatString(order.pizzas[0].toppings.toString())}</td>
-                                <td>{order.pizzas[0].height}</td>
                                 <td>{formatString(order.pizzas[0].size)}</td>
                                 <td>{priceFormat(order.pizzas[0].cost)}</td>
                             </tr>

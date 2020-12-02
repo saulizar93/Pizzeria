@@ -16,17 +16,17 @@ export default function CustomerPage(){
     },[])
     return(
         <Container>
-            <h1 style={{textAlign:'center'}}> List of Customers </h1>
+            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> List of Customers </h1>
             <Table hover bordered className='table'>
                 <thead>
-                    <tr>
+                    <tr style={{backgroundColor:'red'}}>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Street Address</th>
                         <th>Street City</th>
                         <th>Street State</th>
                         <th>Zip Code</th>
-                        <th>Credit Card Number</th>
                         <th>Favorite Order</th>
 
                     </tr>
@@ -34,15 +34,15 @@ export default function CustomerPage(){
                 <tbody>
                     {customers.map( (customer)=>{
                         return(
-                            <tr key={customer._id.hexString}>
+                            <tr key={customer._id.hexString} style={{backgroundColor:'orange'}}>
+                                <td>{customer.firstName} {customer.lastName}</td>
                                 <td>{customer.email}</td>
                                 <td>{customer.phoneNum}</td>
-                                <td>{customer.address.streetAddress}</td>
-                                <td>{customer.address.city}</td>
-                                <td>{customer.address.state}</td>
-                                <td>{customer.address.postal}</td>
-                                {/* <td>{customer.card.cardNumber}</td> */}
-                                <td>{customer.favorite}</td>
+                                <td>{customer.homeAddress.streetAddress}</td>
+                                <td>{customer.homeAddress.city}</td>
+                                <td>{customer.homeAddress.state}</td>
+                                <td>{customer.homeAddress.postal}</td>
+                                <td>{customer.favoriteOrder[0].type}, {customer.favoriteOrder[1].type}</td>
                             </tr>
 
                         )
