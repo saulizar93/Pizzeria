@@ -16,6 +16,15 @@ export default function OrderPage(){
         })
         .catch( (err)=> console.log(err));
     },[])
+
+    let totalCost = ( (pizzaItem)=>{
+        let sum = 0;
+        for(let i=0; i<pizzaItem.length;i++){
+            sum = sum + pizzaItem[i].cost;
+        }
+        return sum;
+    })
+
     return(
         <Container>
             <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> Pizza Orders </h1>
@@ -23,10 +32,12 @@ export default function OrderPage(){
                 <thead>
                     <tr style={{backgroundColor:'red'}}> 
                         <th>Customer Name</th>
+                        <th>Orders</th>
                         <th>Pizza Type</th>
                         <th>Toppings</th>
                         <th>Size</th>
-                        <th>Cost</th>
+                        <th>Individual Costs</th>
+                        <th>Total Cost</th>
                         <th>Order Type</th>
                         <th>Status</th>
                     </tr>
@@ -36,10 +47,46 @@ export default function OrderPage(){
                         return(
                             <tr key={order._id.hexString} style={{backgroundColor:'orange'}}>
                                 <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
-                                <td>{formatString(order.pizzas[0].type)}</td>
-                                <td>{formatString(order.pizzas[0].toppings.toString())}</td>
-                                <td>{formatString(order.pizzas[0].size)}</td>
-                                <td>{priceFormat(order.pizzas[0].cost)}</td>
+                                <td>{order.pizzas.length}</td>
+                                <td>
+                                    <ol style={{paddingLeft:15}}>
+                                        {order.pizzas.map( (pizzaItem)=>{
+                                            return(
+                                            <li>{formatString(pizzaItem.type)}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{paddingLeft:15}}>
+                                        {order.pizzas.map( (pizzaItem)=>{
+                                            return(
+                                                <li>{formatString(pizzaItem.toppings.toString())}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{paddingLeft:15}}>
+                                        {order.pizzas.map( (pizzaItem)=>{
+                                            return(
+                                                <li>{formatString(pizzaItem.size)}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{paddingLeft:15}}>
+                                        {order.pizzas.map( (pizzaItem)=>{
+                                            return(
+                                                <li>{priceFormat(pizzaItem.cost)}</li>
+                                             )
+                                        })} 
+                                    </ol>
+                                </td>
+                                <td>
+                                    {priceFormat(totalCost(order.pizzas))}
+                                </td>
                                 <td>{formatString(order.type)}</td>
                                 <td>{formatString(order.status)}</td>
                             </tr>
