@@ -27,6 +27,8 @@ export default function OrderPage(){
                         <th>Toppings</th>
                         <th>Size</th>
                         <th>Cost</th>
+                        <th>Order Type</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +40,8 @@ export default function OrderPage(){
                                 <td>{formatString(order.pizzas[0].toppings.toString())}</td>
                                 <td>{formatString(order.pizzas[0].size)}</td>
                                 <td>{priceFormat(order.pizzas[0].cost)}</td>
+                                <td>{formatString(order.pizzas[0].type)}</td>
+                                <td>{formatString(order.status)}</td>
                             </tr>
                         )
                     })}
