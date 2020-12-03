@@ -40,7 +40,7 @@ export default function OrderPage(){
                                 <td>{formatString(order.pizzas[0].toppings.toString())}</td>
                                 <td>{formatString(order.pizzas[0].size)}</td>
                                 <td>{priceFormat(order.pizzas[0].cost)}</td>
-                                <td>{formatString(order.pizzas[0].type)}</td>
+                                <td>{formatString(order.type)}</td>
                                 <td>{formatString(order.status)}</td>
                             </tr>
                         )
