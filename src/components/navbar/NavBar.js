@@ -14,9 +14,10 @@ export default function NavBar(){
            
             <Col style={{textAlign: "left"}}>
                 <Link to="/" style={buttonStyle}><Button color="danger">Home</Button></Link>
-                <Link to="/getPizzas" style={buttonStyle}><Button color="danger">Pizzas</Button></Link> 
-                <Link to="/findPizza" style={buttonStyle}><Button color="danger">Find Pizza</Button></Link>           
+                {/* <Link to="/getPizzas" style={buttonStyle}><Button color="danger">Pizzas</Button></Link> 
+                <Link to="/findPizza" style={buttonStyle}><Button color="danger">Find Pizza</Button></Link>    */}
                 <Link to="/getOrders" style={buttonStyle}><Button color="danger">Orders</Button></Link>
+                <Link to="/findOrders" style={buttonStyle}><Button color="danger">Find Order</Button></Link>
                 <Link to="/getCustomers" style={buttonStyle}><Button color="danger">Customers</Button></Link>
             </Col>
             <Col sm={3}>

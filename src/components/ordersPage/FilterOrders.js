@@ -1,23 +1,46 @@
-import React, { useState, useEffect} from 'react';
-import {Table, Container} from 'reactstrap';
+import React, {useState} from 'react';
+import {Button, Col, Form, FormGroup, Input, Label, Table} from 'reactstrap';
+import { formatString } from '../util/StringFormat';
 import { priceFormat } from '../util/PriceFormat';
-import {formatString} from '../util/StringFormat';
-import FilterOrders from './FilterOrders';
 
-export default function OrderPage(){
 
-    const [orders, setOrders] = useState([]);
+export default function FilterOrder(){
 
-    useEffect( ()=> {
-        fetch('http://localhost:8080/orders')
-        .then( (response)=> response.json())
+    const [filterBy, setFilterBy] = useState("");
+    const [value, setValue] = useState("");
+    const [filteredOrders, setFilteredOrders] = useState([]);
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        let jsonBody={};
+        let filterBy="status";
+        if(value===""){
+            console.log("Please select a value first");
+            return;
+        }
+        console.log("FilterBy: "+filterBy);
+        console.log("Value: "+value);
+        jsonBody[filterBy]=value;
+
+        fetch('http://localhost:8080/orders/examples',{
+            method: "POST",
+            body: JSON.stringify(jsonBody),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }).then( (response)=> response.json())
         .then( (data)=>{
-            setOrders(data);
-            console.log(data);
+            setFilteredOrders(data);
         })
-        .catch( (err)=> console.log(err));
-    },[])
+        .catch( (err)=> console.log(err));  
+    }
 
+    const handleFilterChange = (e)=>{
+        setFilterBy(e.target.value);
+    }
+    const handleValueChange = (e)=>{
+        setValue(e.target.value);
+    }
     let totalCost = ( (pizzaItem)=>{
         let sum = 0;
         for(let i=0; i<pizzaItem.length;i++){
@@ -28,12 +51,42 @@ export default function OrderPage(){
 
     return(
         <div>
-        <Container>
-            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> Pizza Orders </h1>
-            <Table hover bordered className='table'>
+        {/* <Card> */}
+            {/* <CardTitle tag="h4">By Order Status</CardTitle> */}
+            {/* <Container> */}
+            <br/>
+            <br/>
+                <Form>
+                    {/* <FormGroup row>
+                        <Label sm={2} for="filterBy" style={{textAlign:'center',fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'orange'}}>Filter By</Label>
+                        <Col sm={2}>
+                            <Input type="select" name="filterBy" id="filterBy" value={filterBy} onChange={handleFilterChange}>
+                                <option value="status">Order Status</option>
+                                <option value="status">Customer Name</option>
+                            </Input>
+                        </Col>
+                    </FormGroup> */}
+                    <FormGroup row>
+                        <Label sm={2} for="value" style={{textAlign:'center',fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'orange'}}>Filter By</Label>
+                        <Col sm={2}>
+                            <Input type="select" name="value" id="value" value={value} onChange={handleValueChange}>
+                                <option default value="PENDING">Pending</option>
+                                <option value="COOKING">Cooking</option>
+                                <option value="READY">Ready</option>
+                                <option value="DELIVERING">Delivering</option>
+                                <option value="COMPLETED">Completed</option>
+                            </Input>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row style={{ display: "flex" }}>
+                        <Button color="danger" onClick={handleSubmit} style={{ marginLeft: 300 }}>Find Order</Button>
+                    </FormGroup>
+                </Form>
+                <Table bordered hover className='table'>
                 <thead>
                     <tr style={{backgroundColor:'red'}}> 
                         <th>Customer Name</th>
+                        <th>Customer Address</th>
                         <th>Orders</th>
                         <th>Pizza Type</th>
                         <th>Toppings</th>
@@ -45,10 +98,11 @@ export default function OrderPage(){
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map( (order)=>{
+                    {filteredOrders.map( (order)=>{
                         return(
                             <tr key={order._id.hexString} style={{backgroundColor:'orange'}}>
                                 <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
+                                <td>{order.customer.homeAddress.streetAddress} {order.customer.homeAddress.city} {order.customer.homeAddress.state} {order.customer.homeAddress.postal}</td>
                                 <td>{order.pizzas.length}</td>
                                 <td>
                                     <ol style={{paddingLeft:15}}>
@@ -96,7 +150,8 @@ export default function OrderPage(){
                     })}
                 </tbody>
             </Table>
-        </Container>
+            {/* </Container> */}
+        {/* </Card> */}
         </div>
     )
 }
