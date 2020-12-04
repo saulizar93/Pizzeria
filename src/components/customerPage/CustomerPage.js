@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
+import { formatString } from '../util/StringFormat';
 
 export default function CustomerPage(){
 
@@ -42,7 +43,16 @@ export default function CustomerPage(){
                                 <td>{customer.homeAddress.city}</td>
                                 <td>{customer.homeAddress.state}</td>
                                 <td>{customer.homeAddress.postal}</td>
-                                <td>{customer.favoriteOrder[0].type}, {customer.favoriteOrder[1].type}</td>
+                                <td>
+                                    <ol style={{paddingLeft:15}}>
+                                    {customer.favoriteOrder.map( (favOrder)=>{
+    
+                                    return(
+                                        <li>{formatString(favOrder.type)}</li>
+                                    )
+                                    })}
+                                    </ol>
+                                </td>
                             </tr>
 
                         )
