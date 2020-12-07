@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
 import { priceFormat } from '../util/PriceFormat';
 import {formatString} from '../util/StringFormat';
-import FilterOrders from './FilterOrders';
 
 export default function OrderPage(){
 
@@ -97,6 +96,8 @@ export default function OrderPage(){
                 </tbody>
             </Table>
         </Container>
+        
         </div>
+        
     )
 }
