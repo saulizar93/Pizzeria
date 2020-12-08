@@ -25,8 +25,8 @@ export default function CustomerPage(){
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Street Address</th>
-                        <th>Street City</th>
-                        <th>Street State</th>
+                        <th>City</th>
+                        <th>State</th>
                         <th>Zip Code</th>
                         <th>Favorite Order</th>
 

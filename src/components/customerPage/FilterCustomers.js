@@ -115,8 +115,8 @@ export default function FilterCustomers(){
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>Street Address</th>
-                                <th>Street City</th>
-                                <th>Stret State</th>
+                                <th>City</th>
+                                <th>State</th>
                                 <th>Zip Code</th>
                                 <th>Favorite Order</th>
                             </tr>
