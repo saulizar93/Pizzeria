@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Card, CardTitle, Col, Container, Form, FormGroup, Input, Label, Table} from 'reactstrap';
+import {Button, Col, Form, FormGroup, Input, Label, Table} from 'reactstrap';
 import { formatString } from '../util/StringFormat';
 
 export default function FilterCustomers(){
@@ -77,15 +77,20 @@ export default function FilterCustomers(){
         form=<FormGroup row>
             <Label sm={2} for="value" style={{textAlign:'center', fontFamily:'Monaco',fontWeight:'bold',backgroundColor:'orange'}}>Value</Label>
             <Col sm={2}>
-                <Input placeholder="Enter City" label="Input City" type="text" name="value" id="value" value={value} onChange={handleValueChange}>
-                </Input>
+            <Input type="select" name="city" id="city" value={value} onChange={handleValueChange}>
+                                <option value="Arlington">Arlington</option>
+                                <option value="San Francisco">San Francisco</option>
+                            </Input>
             </Col>
         </FormGroup>
     }
     return(
-        <Card>
-            <CardTitle tag="h1" style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}>Find Customer</CardTitle>
-            <Container>
+        // <Card>
+        //     <CardTitle tag="h1" style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}>Find Customer</CardTitle>
+        //     <Container>
+        <div>
+            <br/>
+            <br/>
                 <Form>
                     <FormGroup row>
                         <Label sm={2} for='filterBy' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>Filter By</Label>
@@ -101,7 +106,7 @@ export default function FilterCustomers(){
                     </FormGroup>
                     {form}
                     <FormGroup row>
-                        <Button color="danger" style={{marginLeft: "220px"}} onClick={handleSubmit}>Find Customer</Button>
+                        <Button color="danger" style={{marginLeft: "300px"}} onClick={handleSubmit}>Find Customer</Button>
                     </FormGroup>
                     <Table hover bordered className='table'>
                         <thead>
@@ -144,7 +149,8 @@ export default function FilterCustomers(){
                         </tbody>
                     </Table>
                 </Form>
-            </Container>
-        </Card>
+            {/* </Container>
+        </Card> */}
+        </div>
     )
 }
