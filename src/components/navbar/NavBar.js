@@ -19,6 +19,7 @@ export default function NavBar(){
                 <Link to="/getOrders" style={buttonStyle}><Button color="danger">Orders</Button></Link>
                 <Link to="/findOrders" style={buttonStyle}><Button color="danger">Find Order</Button></Link>
                 <Link to="/getCustomers" style={buttonStyle}><Button color="danger">Customers</Button></Link>
+                <Link to="/findCustomers" style={buttonStyle}><Button color="danger">Find Customer</Button></Link>
             </Col>
             <Col sm={3}>
             <h4 style={{color:'black'}}>

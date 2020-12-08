@@ -117,6 +117,7 @@ export default function FilterOrder(props) {
                 <thead>
                     <tr style={{ backgroundColor: 'red' }}>
                         <th>Customer Name</th>
+                        <th>Customer Email</th>
                         <th>Customer Address</th>
                         <th>Orders</th>
                         <th>Pizza Type</th>
@@ -133,6 +134,7 @@ export default function FilterOrder(props) {
                         return (
                             <tr key={order._id.hexString} style={{ backgroundColor: 'orange' }}>
                                 <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
+                                <td>{formatString(order.customer.email)}</td>
                                 <td>{order.customer.homeAddress.streetAddress} {order.customer.homeAddress.city} {order.customer.homeAddress.state} {order.customer.homeAddress.postal}</td>
                                 <td>{order.pizzas.length}</td>
                                 <td>
