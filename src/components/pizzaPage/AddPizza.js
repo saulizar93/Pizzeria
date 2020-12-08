@@ -55,17 +55,18 @@ export const AddPizza = ()=>{
         }
 
         console.log(jsonBody)
+        return jsonBody
         
 
-        fetch('http://localhost:8080/pizzas',{
-            method: "POST",
-            body: JSON.stringify(jsonBody),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {res.json();
-        }).then(data => {return data})
-        .catch((e)=>{return e});
+        // fetch('http://localhost:8080/pizzas',{
+        //     method: "POST",
+        //     body: JSON.stringify(jsonBody),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(res => {res.json();
+        // }).then(data => {return data})
+        // .catch((e)=>{return e});
     }
 
     const handleSizeChange = (e)=>{

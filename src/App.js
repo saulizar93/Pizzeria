@@ -12,6 +12,7 @@ import AppBar from './components/navbar/AppBar';
 import backgroundImage from './img/PizzaBackground.png';
 import FilterOrders from './components/ordersPage/FilterOrders';
 import FilterCustomers from './components/customerPage/FilterCustomers';
+import { NewOrder } from './components/ordersPage/NewOrder';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <Route path='/getOrders' component={OrderPage} exact/>
       <Route path='/findPizza' component={FilterPizza} exact/>
       <Route path='/findOrders' component={FilterOrders} exact/>
+      <Route path='/newOrder' component={NewOrder} exact />
     </Switch>
     </div>
   );
