@@ -50,7 +50,7 @@ export default function PizzaCards() {
 
         <Grid item md={3}>
           <PizzaCard title="Vegetarian Pizza" subheader="November 26, 2020" image={logo5} altText="Paella dish" 
-          text1="If you drive a Prius, this is your pizza. Pick to high moral ground!"
+          text1="If you drive a Prius, this is your pizza. Pick the high moral ground!"
           text2="How we make it:"
           text3="We put all the healhty and environmentally aware ingredients on this slice."
           text4="We cook it in the microwave to avoid releasing damaging gases to the environment."
