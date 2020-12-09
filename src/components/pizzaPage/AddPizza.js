@@ -56,6 +56,7 @@ export const AddPizza = ()=>{
 
         console.log(jsonBody)
         return jsonBody
+    }
         
 
         // fetch('http://localhost:8080/pizzas',{
@@ -67,7 +68,6 @@ export const AddPizza = ()=>{
         // }).then(res => {res.json();
         // }).then(data => {return data})
         // .catch((e)=>{return e});
-    }
 
     const handleSizeChange = (e)=>{
         setSize(e.target.value);
