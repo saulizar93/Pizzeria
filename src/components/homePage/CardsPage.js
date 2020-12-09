@@ -57,7 +57,7 @@ export default function PizzaCards() {
           text5="We set the microwave to 2 minutes, and do not stop staring at the rotating pizza for a second."/>
 
           <PizzaCard title="Meat Lovers Pizza" subheader="November 26, 2020" image={logo6} altText="Paella dish" 
-          text1="Got a full size truck with full size America flags hanging in the back?"
+          text1="Got a full size truck with full size American flags hanging in the back?"
           text2="How we make it:"
           text3="We put all the meat and grind onto every single slice."
           text4="We cook the meat separately from the pizza, medium well, and then place them on the slice."
