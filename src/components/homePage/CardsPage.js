@@ -52,7 +52,7 @@ export default function PizzaCards() {
           <PizzaCard title="Vegetarian Pizza" subheader="November 26, 2020" image={logo5} altText="Paella dish" 
           text1="If you drive a Prius, this is your pizza. Pick the high moral ground!"
           text2="How we make it:"
-          text3="We put all the healhty and environmentally aware ingredients on this slice."
+          text3="We put all the healthy and environmentally aware ingredients on this slice."
           text4="We cook it in the microwave to avoid releasing damaging gases to the environment."
           text5="We set the microwave to 2 minutes, and do not stop staring at the rotating pizza for a second."/>
 
