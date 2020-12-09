@@ -8,6 +8,7 @@ import {formatString} from '../util/StringFormat'
 import { AddPizza } from '../pizzaPage/AddPizza'
 import PhoneAvField from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
+import CurrencyInput from 'react-currency-input'
 
 export const NewOrder = (props)=>{
 
@@ -142,8 +143,8 @@ export const NewOrder = (props)=>{
         setOrderType(e.target.value)
     }
 
-    const changeTip = (e)=>{
-        setTip(e.target.value)
+    const changeTip = (e, maskedValue)=>{
+        setTip(maskedValue)
     }
         
     return(
@@ -270,7 +271,7 @@ export const NewOrder = (props)=>{
                     <FormGroup row>
                         <Col>
                             <Label sm={4}>Subtotal <Input disabled id="sub" value={priceFormat(subtotal)}></Input></Label>
-                            <Label sm={4} for="tip">Tip <Input id="tip" type="number" value={tip} onChange={changeTip}></Input></Label>
+                            <Label sm={4} for="tip">Tip <CurrencyInput id="tip" prefix="$" value={tip} onChange={changeTip}></CurrencyInput></Label>
                             <Label sm={4} for="total">Total <Input id="total" disabled value={priceFormat(Number(subtotal)+Number(tip))}></Input></Label>
                         </Col>
                     </FormGroup>
