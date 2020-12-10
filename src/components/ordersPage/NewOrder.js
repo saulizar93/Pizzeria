@@ -1,24 +1,19 @@
 import {AvForm, AvField} from 'availity-reactstrap-validation'
 import {Button, Card, Col, CardTitle, Container, Form, Input, FormGroup, Table, Label} from 'reactstrap'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import MultiSelect from 'react-multi-select-component'
 import {priceFormat} from '../util/PriceFormat'
 import {calculateCost} from '../util/calculateCost'
 import {formatString} from '../util/StringFormat'
-import { AddPizza } from '../pizzaPage/AddPizza'
 import PhoneAvField from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import CurrencyInput from 'react-currency-input'
+import { states } from '../util/states'
+import { toppings } from '../util/toppings'
+import { heightCheck } from '../util/heightCheck'
 
 export const NewOrder = (props)=>{
-
-    const customerData = null
-    // const customerData = {
-    //     fName: "Saul",
-    //     lName: "Ojeda",
-    //     phone: '+12392493021',
-    //     email: 'saul.ojeda@infosys.com'
-    // }//{/*get customer data*/}
+    
     const [fName, setFname] = useState("")
     const [lName, setLname] = useState("")
     const [email, setEmail] = useState("")
@@ -28,38 +23,40 @@ export const NewOrder = (props)=>{
     const [tip, setTip] = useState(0)
     const [pizzaList, setPizzaList] = useState([])
 
-    const toppings = [
-        {label: "Anchovy", value: "ANCHOVY"},
-        {label: "Artichoke", value: "ARTICHOKE"},
-        {label: "Bacon", value: "BACON"},
-        {label: "Basil", value: "BASIL"},
-        {label: "Broccoli", value: "BROCCOLI"},
-        {label: "Cheese", value: "CHEESE"},
-        {label: "Carrot", value: "CARROT"},
-        {label: "Chicken", value: "CHICKEN"},
-        {label: "Cilantro", value: "CILANTRO"},
-        {label: "Crouton", value: "CROUTON"},
-        {label: "Garlic", value: "GARLIC"},
-        {label: "Ham", value: "HAM"},
-        {label: "Jalapeño", value: "JALAPENO"},
-        {label: "Lettuce", value: "LETTUCE"},
-        {label: "Meatball", value: "MEATBALL"},
-        {label: "Mushroom", value: "MUSHROOM"},
-        {label: "Olive", value: "OLIVE"},
-        {label: "Onion", value: "ONION"},
-        {label: "Oregano", value: "OREGANO"},
-        {label: "Pasta", value: "PASTA"},
-        {label: "Pepper", value: "PEPPER"},
-        {label: "Pepperoni", value: "PEPPERONI"},
-        {label: "Pineapple", value: "PINEAPPLE"},
-        {label: "Sausage", value: "SAUSAGE"},
-        {label: "Salami", value: "SALAMI"},
-        {label: "Spinach", value: "SPINACH"},
-        {label: "Tomato", value: "TOMATO"}
-    ]
     const [selectedToppings, setSelectedToppings] = useState([]);
     const [size, setSize] = useState("SLICE");
     const [type, setType] = useState("CLASSIC");
+    
+    const [address1, setAddress1] = useState("")
+    const [address2, setAddress2] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zip, setZip] = useState("");
+
+
+    const handleFormChange = (e)=>{
+        const value = e.target.value;
+        switch(e.target.name){
+            case "fname": setFname(value); break;
+            case "lname": setLname(value); break;
+            case "email": setEmail(value); break;
+            case "add1": setAddress1(value); break;
+            case "add2": setAddress2(value); break;
+            case "city": setCity(value); break;
+            case "state": setState(value); break;
+            case "zip": setZip(value); break;
+            default: break;
+        }
+    }
+    const customerData = null
+    // const customerData = {
+    //     fName: "Saul",
+    //     lName: "Ojeda",
+    //     phone: '+12392493021',
+    //     email: 'saul.ojeda@infosys.com',
+    //     _id: '347ca3298be102f0d164a'
+    // }
+    
 
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -85,62 +82,51 @@ export const NewOrder = (props)=>{
         setType(e.target.value);
     }
 
-    const heightCheck = (type)=>{
-        switch(type){
-            case "CLASSIC":
-                return 0.75
-            case "THIN_CRUST":
-                return 0.5
-            case "DEEP_DISH":
-                return 3
-            case "SICILIAN":
-                return 1.5
-            case "STUFFED":
-                return 2
-            case "GLUTEN_FREE":
-                return 0.5
-            default:
-                return 0
-        }
-    }
 
     let price = calculateCost(type, size, selectedToppings);
 
     const submitOrder = (e)=>{
         e.preventDefault()
         let data = {
-            customer: {
-                _id: customerData ? customerData.id : 0,
-            },
+            customer: customerData? {
+                _id: customerData._id
+            } : null,
             pizzeriaId: null,
             pizzas: pizzaList,
             cost: subtotal,
             tip: tip,
             status: null,
             type: orderType,
-            deliveryAddress: type==="DELIVERY" ? {  
-                streetAddress:      customerData ? customerData.streetAddress : "",
-                streetAddressLine2: customerData ? customerData.streetAddressLine2 : "",
-                city:               customerData ? customerData.city : "",
-                state:              customerData ? customerData.state : "",
-                postal:             customerData ? customerData.zip : ""
+            deliveryAddress: (orderType==="DELIVERY" || orderType==="CATERING") ? {  
+                streetAddress:      customerData ? customerData.streetAddress : address1,
+                streetAddressLine2: customerData ? customerData.streetAddressLine2 : address2,
+                city:               customerData ? customerData.city : city,
+                state:              customerData ? customerData.state : state,
+                postal:             customerData ? customerData.zip : zip
             } : null
         }
 
-        fetch('http://localhost:8080/orders',{
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {res.json();
-        }).then(data => {return data})
-        .catch((e)=>{return e});
+        // fetch('http://localhost:8080/orders',{
+        //     method: "POST",
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(res => {res.json();
+        // }).then(data => {return data})
+        // .catch((e)=>{return e});
         console.log(data)
     }
 
     const typeChange = (e)=>{
         setOrderType(e.target.value)
+        if(e.target.value==="DELIVERY" || e.target.value==="CATERING")
+            showDelivery(true);
+        else showDelivery(false)
+    }
+
+    const showDelivery = (p)=>{
+            document.getElementById("address").hidden = !p
     }
 
     const changeTip = (e, maskedValue)=>{
@@ -154,15 +140,15 @@ export const NewOrder = (props)=>{
                 <AvForm>
                     <FormGroup row>
                         <Col sm={6}>
-                            <AvField name="fname" label="First Name" disabled={(customerData ? true : false)} value={(customerData ? customerData.fName : fName)}></AvField>
+                            <AvField name="fname" label="First Name" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.fName : fName)}></AvField>
                         </Col>
                         <Col sm={6}>
-                            <AvField name="lname" label="Last Name" disabled={(customerData ? true : false)} value={(customerData ? customerData.lName : lName)}></AvField>
+                            <AvField name="lname" label="Last Name" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.lName : lName)}></AvField>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Col sm={6}>
-                            <AvField name="email" label="Email" disabled={(customerData ? true : false)} value={(customerData ? customerData.email : email)}></AvField>
+                            <AvField name="email" label="Email" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.email : email)}></AvField>
                         </Col>
                         <Col sm={6}>
                             <Label for="phone">Phone</Label>
@@ -190,6 +176,33 @@ export const NewOrder = (props)=>{
                             </Label>
                         </Col>
                     </FormGroup>
+                    <div id="address" row hidden>
+                        <FormGroup row>
+                            <Col sm={12}>
+                            <AvField type="text" name="add1" id="add1" label="Address Line 1" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address1 : address1)}></AvField>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={12}>
+                            <AvField type="text" name="add2" id="add2" label="Address Line 2" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address2 : address2)}></AvField>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                        <Col sm={4}>
+                        <AvField type="text" name="city" id="city" label="City" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.city : city)}></AvField>
+                        </Col>
+                        <Col sm={4}>
+                        <AvField type='select' id='state' label="State" name='state' value={state} onChange={handleFormChange}>
+                        {states.map(s=>{
+                            return <option key={s.abv} value={s.abv}>{s.name}</option>
+                        })}
+                        </AvField>
+                        </Col>
+                        <Col sm={4}>
+                            <AvField type='text' id='zip' name='zip' label="Zip Code" maxLength='5' value={zip} onChange={handleFormChange}></AvField>
+                        </Col>
+                        </FormGroup>
+                    </div>
 
                     <br />
 

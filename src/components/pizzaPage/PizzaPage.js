@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import { Container, Table } from 'reactstrap';
 import { priceFormat } from '../util/PriceFormat';
 import { formatString } from '../util/StringFormat';
-import { AddPizza } from './AddPizza';
 
 export default function PizzaPage(){
 
@@ -19,7 +18,6 @@ export default function PizzaPage(){
     }, [pizza])
     return(
         <Container>
-            <AddPizza />
             <h1 style={{textAlign:'center'}}> List of Pizzas </h1>
             <Table bordered hover className='table'>
                 <thead>
