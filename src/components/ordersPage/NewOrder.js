@@ -54,7 +54,14 @@ export const NewOrder = (props)=>{
     //     lName: "Ojeda",
     //     phone: '+12392493021',
     //     email: 'saul.ojeda@infosys.com',
-    //     _id: '347ca3298be102f0d164a'
+    //     _id: '347ca3298be102f0d164a',
+    //     address: {
+    //             streetAddress: '297 Sunnyview Ave',
+    //             streetAddressLine2: '',
+    //             city: 'Knoxville',
+    //             state: 'IL',
+    //             zip: '61448'
+    //     }
     // }
     
 
@@ -98,11 +105,11 @@ export const NewOrder = (props)=>{
             status: null,
             type: orderType,
             deliveryAddress: (orderType==="DELIVERY" || orderType==="CATERING") ? {  
-                streetAddress:      customerData ? customerData.streetAddress : address1,
-                streetAddressLine2: customerData ? customerData.streetAddressLine2 : address2,
-                city:               customerData ? customerData.city : city,
-                state:              customerData ? customerData.state : state,
-                postal:             customerData ? customerData.zip : zip
+                streetAddress:      customerData ? customerData.address.streetAddress : address1,
+                streetAddressLine2: customerData ? customerData.address.streetAddressLine2 : address2,
+                city:               customerData ? customerData.address.city : city,
+                state:              customerData ? customerData.address.state : state,
+                postal:             customerData ? customerData.address.zip : zip
             } : null
         }
 
@@ -134,7 +141,7 @@ export const NewOrder = (props)=>{
     }
         
     return(
-        <Card>
+        <Card style={{padding: '10px', margin: '15px'}}>
             <CardTitle>Create New Order</CardTitle>
             <Container>
                 <AvForm>
@@ -179,27 +186,27 @@ export const NewOrder = (props)=>{
                     <div id="address" row hidden>
                         <FormGroup row>
                             <Col sm={12}>
-                            <AvField type="text" name="add1" id="add1" label="Address Line 1" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address1 : address1)}></AvField>
+                            <AvField type="text" name="add1" id="add1" label="Address Line 1" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address.streetAddress : address1)}></AvField>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col sm={12}>
-                            <AvField type="text" name="add2" id="add2" label="Address Line 2" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address2 : address2)}></AvField>
+                            <AvField type="text" name="add2" id="add2" label="Address Line 2" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address.streetAddressLine2 : address2)}></AvField>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                         <Col sm={4}>
-                        <AvField type="text" name="city" id="city" label="City" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.city : city)}></AvField>
+                        <AvField type="text" name="city" id="city" label="City" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address.city : city)}></AvField>
                         </Col>
                         <Col sm={4}>
-                        <AvField type='select' id='state' label="State" name='state' value={state} onChange={handleFormChange}>
+                        <AvField type='select' id='state' label="State" name='state' disabled={(customerData ? true : false)} value={(customerData ? customerData.address.state : state)} onChange={handleFormChange}>
                         {states.map(s=>{
                             return <option key={s.abv} value={s.abv}>{s.name}</option>
                         })}
                         </AvField>
                         </Col>
                         <Col sm={4}>
-                            <AvField type='text' id='zip' name='zip' label="Zip Code" maxLength='5' value={zip} onChange={handleFormChange}></AvField>
+                            <AvField type='text' id='zip' name='zip' label="Zip Code" maxLength='5' disabled={(customerData ? true : false)} value={(customerData ? customerData.address.zip : zip)} onChange={handleFormChange}></AvField>
                         </Col>
                         </FormGroup>
                     </div>
