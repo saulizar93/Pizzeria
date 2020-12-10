@@ -3,6 +3,7 @@ import PhoneAvField, { parsePhoneNumber } from 'react-phone-number-input'
 import { Button, Col, Container, FormGroup, Label } from 'reactstrap'
 import 'react-phone-number-input/style.css'
 import { AvField, AvForm} from 'availity-reactstrap-validation'
+import { states } from '../util/states'
 
 export const CustomerForm = ()=>{
 
@@ -19,60 +20,6 @@ export const CustomerForm = ()=>{
     const [zip, setZip] = useState("");
 
     const [phone, setPhone] = useState("");
-
-    const states = [{abv: 'AL', name: "Alabama"},
-                    {abv: 'AK', name: "Alaska"},
-                    {abv: 'AZ', name: "Arizona"},
-                    {abv: 'AR', name: "Arkansas"},
-                    {abv: 'CA', name: "California"},
-                    {abv: 'CO', name: "Colorado"},
-                    {abv: 'CT', name: "Connecticut"},
-                    {abv: 'DE', name: "Delaware"},
-                    {abv: 'DC', name: "District of Columbia"},
-                    {abv: 'FL', name: "Florida"},
-                    {abv: 'GA', name: "Georgia"},
-                    {abv: 'HI', name: "Hawaii"},
-                    {abv: 'ID', name: "Idaho"},
-                    {abv: 'IL', name: "Illinois"},
-                    {abv: 'IN', name: "Indiana"},
-                    {abv: 'IA', name: "Iowa"},
-                    {abv: 'KS', name: "Kansas"},
-                    {abv: 'KY', name: "Kentucky"},
-                    {abv: 'LA', name: "Louisiana"},
-                    {abv: 'ME', name: "Maine"},
-                    {abv: 'MD', name: "Maryland"},
-                    {abv: 'MA', name: "Massachusetts"},
-                    {abv: 'MI', name: "Michigan"},
-                    {abv: 'MN', name: "Minnesota"},
-                    {abv: 'MS', name: "Mississippi"},
-                    {abv: 'MO', name: "Missouri"},
-                    {abv: 'MT', name: "Montana"},
-                    {abv: 'NE', name: "Nebraska"},
-                    {abv: 'NV', name: "Nevada"},
-                    {abv: 'NH', name: "New Hampshire"},
-                    {abv: 'NJ', name: "New Jersey"},
-                    {abv: 'NM', name: "New Mexico"},
-                    {abv: 'NY', name: "New York"},
-                    {abv: 'NC', name: "North Carolina"},
-                    {abv: 'ND', name: "North Dakota"},
-                    {abv: 'OH', name: "Ohio"},
-                    {abv: 'OK', name: "Oklahoma"},
-                    {abv: 'OR', name: "Oregon"},
-                    {abv: 'PA', name: "Pennsylvania"},
-                    {abv: 'PR', name: "Puerto Rico"},
-                    {abv: 'RI', name: "Rhode Island"},
-                    {abv: 'SC', name: "South Carolina"},
-                    {abv: 'SD', name: "South Dakota"},
-                    {abv: 'TN', name: "Tennessee"},
-                    {abv: 'TX', name: "Texas"},
-                    {abv: 'UT', name: "Utah"},
-                    {abv: 'VT', name: "Vermont"},
-                    {abv: 'VA', name: "Virginia"},
-                    {abv: 'VI', name: "Virgin Islands"},
-                    {abv: 'WA', name: "Washington"},
-                    {abv: 'WV', name: "West Virginia"},
-                    {abv: 'WI', name: "Wisconsin"},
-                    {abv: 'WY', name: "Wyoming"}]
     
 
     const validateForm = (e)=>{
@@ -214,7 +161,7 @@ export const CustomerForm = ()=>{
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Button color='success' onClick={validateForm}>Create Customer</Button>
+                <Button color='success' style={{marginLeft: '15px'}} onClick={validateForm}>Create Customer</Button>
             </FormGroup>
         </AvForm>
         </Container>

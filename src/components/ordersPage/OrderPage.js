@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
 import { priceFormat } from '../util/PriceFormat';
 import {formatString} from '../util/StringFormat';
-
+import { NewOrder } from '../ordersPage/NewOrder'
 export default function OrderPage(){
 
     const [orders, setOrders] = useState([]);
@@ -96,6 +96,7 @@ export default function OrderPage(){
                 </tbody>
             </Table>
         </Container>
+        <NewOrder />
         
         </div>
         
