@@ -12,10 +12,10 @@ export default function OrderPage(){
         .then( (response)=> response.json())
         .then( (data)=>{
             setOrders(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch( (err)=> console.log(err));
-    },[])
+    },[orders])
 
     let totalCost = ( (pizzaItem)=>{
         let sum = 0;

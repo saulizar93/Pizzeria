@@ -50,18 +50,18 @@ export const NewOrder = (props)=>{
     }
     const customerData = null
     // const customerData = {
-    //     fName: "Saul",
-    //     lName: "Ojeda",
-    //     phone: '+12392493021',
-    //     email: 'saul.ojeda@infosys.com',
-    //     _id: '347ca3298be102f0d164a',
+    //     _id: "5fd272c428bd5f10a16f09c7",
+    //     email: "Jeff@pizza.com",
+    //     fName: "Jeff",
+    //     lName: "Jeffson",
+    //     phone: "+1(231)2312345",
     //     address: {
-    //             streetAddress: '297 Sunnyview Ave',
-    //             streetAddressLine2: '',
-    //             city: 'Knoxville',
-    //             state: 'IL',
-    //             zip: '61448'
-    //     }
+    //         streetAddress: "123 West st",
+    //         streetAddressLine2: " ",
+    //         city: "Arlington",
+    //         state: "TX",
+    //         zip: "04063"
+    //     },
     // }
     
 
@@ -113,15 +113,15 @@ export const NewOrder = (props)=>{
             } : null
         }
 
-        // fetch('http://localhost:8080/orders',{
-        //     method: "POST",
-        //     body: JSON.stringify(data),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(res => {res.json();
-        // }).then(data => {return data})
-        // .catch((e)=>{return e});
+        fetch('http://localhost:8080/orders',{
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {res.json();
+        }).then(data => {return data})
+        .catch((e)=>{return e});
         console.log(data)
     }
 
@@ -141,7 +141,7 @@ export const NewOrder = (props)=>{
     }
         
     return(
-        <Card style={{padding: '10px', margin: '15px'}}>
+        <Card style={{padding: '10px', margin: '15px', opacity: 0.98}}>
             <CardTitle>Create New Order</CardTitle>
             <Container>
                 <AvForm>
