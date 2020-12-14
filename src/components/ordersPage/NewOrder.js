@@ -141,7 +141,7 @@ export const NewOrder = (props)=>{
     }
         
     return(
-        <Card style={{padding: '10px', margin: '15px', opacity: 0.98}}>
+        <Card style={{backgroundColor:'orange', padding: '10px', margin: '15px', opacity: 0.98}}>
             <CardTitle>Create New Order</CardTitle>
             <Container>
                 <AvForm>

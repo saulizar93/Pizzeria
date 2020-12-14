@@ -16,7 +16,7 @@ export default function CustomerPage(){
             console.log(data);
         })
         .catch( (err)=> console.log(err));
-    },[])
+    },[customers])
     return(
         <Container>
             <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> List of Customers </h1>
