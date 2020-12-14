@@ -94,10 +94,9 @@ export const NewOrder = (props)=>{
 
     const submitOrder = (e)=>{
         e.preventDefault()
-        let data = {
-            customer: customerData? {
-                _id: customerData._id
-            } : null,
+        let order = {
+            customer: customerData? 
+            { _id: customerData._id } : { _id: '5fd79d2381595f52128f2647' },
             pizzeriaId: null,
             pizzas: pizzaList,
             cost: subtotal,
@@ -115,14 +114,14 @@ export const NewOrder = (props)=>{
 
         fetch('http://localhost:8080/orders',{
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(order),
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(res => {res.json();
         }).then(data => {return data})
         .catch((e)=>{return e});
-        console.log(data)
+        console.log(order)
     }
 
     const typeChange = (e)=>{
