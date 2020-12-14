@@ -80,6 +80,8 @@ export default function FilterCustomers(){
             <Input type="select" name="city" id="city" value={value} onChange={handleValueChange}>
                                 <option value="Arlington">Arlington</option>
                                 <option value="San Francisco">San Francisco</option>
+                                <option value="San Diego">San Diego</option>
+                                <option value="El Paso">El Paso</option>
                             </Input>
             </Col>
         </FormGroup>
