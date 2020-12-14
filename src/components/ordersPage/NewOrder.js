@@ -142,7 +142,7 @@ export const NewOrder = (props)=>{
         
     return(
         <Card style={{backgroundColor:'orange', padding: '10px', margin: '15px', opacity: 0.98}}>
-            <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Create New Order</CardTitle>
+            <h3 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Create New Order</h3>
             <Container>
                 <AvForm>
                     <FormGroup row>
