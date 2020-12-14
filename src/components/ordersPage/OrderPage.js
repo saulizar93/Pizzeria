@@ -3,9 +3,22 @@ import {Table, Container} from 'reactstrap';
 import { priceFormat } from '../util/PriceFormat';
 import {formatString} from '../util/StringFormat';
 import { NewOrder } from '../ordersPage/NewOrder'
+import {Button} from 'reactstrap';
+
 export default function OrderPage(){
 
     const [orders, setOrders] = useState([]);
+
+    function handleRemove(id){
+        console.log("Deleting: "+id);
+        fetch(`http://localhost:8080/orders?_id=${id}`,{
+            method: "DELETE"
+        }).then( (response)=>response.json())
+        .then( (data)=>{
+            console.log(data);
+        })
+        .catch( (err)=>console.log(err));
+    }
 
     useEffect( ()=> {
         fetch('http://localhost:8080/orders')
@@ -41,6 +54,7 @@ export default function OrderPage(){
                         <th>Total Cost</th>
                         <th>Order Type</th>
                         <th>Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,6 +104,7 @@ export default function OrderPage(){
                                 </td>
                                 <td>{formatString(order.type)}</td>
                                 <td>{formatString(order.status)}</td>
+                                <td><Button color='danger' onClick={()=>handleRemove(order._id.hexString)}>Delete</Button></td>
                             </tr>
                         )
                     })}
