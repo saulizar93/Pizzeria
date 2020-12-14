@@ -73,14 +73,11 @@ export const CustomerForm = ()=>{
         }
     }
     return (
-        // <div style={{backgroundColor:'red'}}>
-        //     <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}>Create Customer</h1>
-        <Card style={{backgroundColor:'orange', margin: '15px', opacity: 0.98}}>
-            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Create Customer</h1>
-            {/* <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Add Customer</CardTitle> */}
+        <Card style={{backgroundColor:'orange'}}>
+            <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Add Customer</CardTitle>
         <Container style={{backgroundColor:'orange'}}>
             <br/>
-        <AvForm>
+        <AvForm >
             <FormGroup row > 
                 <Label sm={2} for='first' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>First Name</Label>
                 <Col sm={4}>
@@ -180,7 +177,6 @@ export const CustomerForm = ()=>{
         </AvForm>
         <br/>
         </Container>
-        {/* </div> */}
         </Card>
     );
 }

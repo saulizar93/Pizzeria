@@ -142,22 +142,22 @@ export const NewOrder = (props)=>{
         
     return(
         <Card style={{backgroundColor:'orange', padding: '10px', margin: '15px', opacity: 0.98}}>
-            <CardTitle>Create New Order</CardTitle>
+            <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Create New Order</CardTitle>
             <Container>
                 <AvForm>
                     <FormGroup row>
                         <Col sm={6}>
-                            <AvField name="fname" label="First Name" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.fName : fName)}></AvField>
+                            <AvField name="fname" label="First Name" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.fName : fName)} ></AvField>
                         </Col>
-                        <Col sm={6}>
+                        <Col sm={6} >
                             <AvField name="lname" label="Last Name" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.lName : lName)}></AvField>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Col sm={6}>
+                        <Col sm={6} >
                             <AvField name="email" label="Email" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.email : email)}></AvField>
                         </Col>
-                        <Col sm={6}>
+                        <Col sm={6} >
                             <Label for="phone">Phone</Label>
                             <PhoneAvField name="phone" id="phone" defaultCountry="US" onChange={setPhone} disabled={(customerData ? true : false)} value={(customerData ? customerData.phone : phone)}></PhoneAvField>
                         </Col>
@@ -195,7 +195,7 @@ export const NewOrder = (props)=>{
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                        <Col sm={4}>
+                        <Col sm={4} >
                         <AvField type="text" name="city" id="city" label="City" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData ? customerData.address.city : city)}></AvField>
                         </Col>
                         <Col sm={4}>
@@ -214,7 +214,7 @@ export const NewOrder = (props)=>{
                     <br />
 
                     <Card style={{marginBottom: "30px"}}>
-                    <CardTitle tag="h4">Add Pizza(s) to Order</CardTitle>
+                    <CardTitle tag="h4" style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Add Pizza(s) to Order</CardTitle>
                     <Container>
                         <Form style={{paddingTop: "15px"}}>
                             <FormGroup row>
@@ -256,7 +256,7 @@ export const NewOrder = (props)=>{
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Button color="success" style={{marginLeft: "15px"}} onClick={handleSubmit}>Add Pizza</Button>
+                                <Button color="danger" style={{marginLeft: "15px"}} onClick={handleSubmit}>Add Pizza</Button>
                             </FormGroup>
                         </Form>
                     </Container>
@@ -295,7 +295,7 @@ export const NewOrder = (props)=>{
                             <Label sm={4} for="total">Total <Input id="total" disabled value={priceFormat(Number(subtotal)+Number(tip))}></Input></Label>
                         </Col>
                     </FormGroup>
-                    <Button type="submit" onClick={submitOrder}>Submit Order</Button>
+                    <Button color='danger' type="submit" onClick={submitOrder}>Submit Order</Button>
                 </AvForm>
             </Container>
         </Card>
