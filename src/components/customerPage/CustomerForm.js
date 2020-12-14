@@ -34,7 +34,15 @@ export const CustomerForm = ()=>{
             card: null
         }
         console.log(customer);
-        //submit the form
+        fetch('http://localhost:8080/customers',{
+            method: "POST",
+            body: JSON.stringify(customer),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {res.json();
+        }).then(data => {return data})
+        .catch((e)=>{return e});
     }
 
     const generateAddress = ()=>{
