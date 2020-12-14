@@ -3,10 +3,23 @@ import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
 import { formatString } from '../util/StringFormat';
 import { CustomerForm } from './CustomerForm';
+import {Button} from 'reactstrap';
 
 export default function CustomerPage(){
 
     const [customers, setCustomers] = useState([]);
+
+    function handleRemove(id){
+        console.log("Deleting: "+id);
+        fetch(`http://localhost:8080/customers?_id=${id}`,{
+            method: "DELETE"
+        }).then( (response)=>response.json())
+        .then((data) =>{
+            console.log(data);
+        })
+        .catch( (err)=>console.log(err));
+        
+    }
 
     useEffect( ()=> {
         fetch('http://localhost:8080/customers')
@@ -31,6 +44,7 @@ export default function CustomerPage(){
                         <th>State</th>
                         <th>Zip Code</th>
                         <th>Favorite Order</th>
+                        <th></th>
 
                     </tr>
                 </thead>
@@ -55,6 +69,7 @@ export default function CustomerPage(){
                                     })}
                                     </ol>
                                 </td>
+                                <td><Button color='danger' onClick={()=> handleRemove(customer._id.hexString)}>Delete</Button></td>
                             </tr>
 
                         )
