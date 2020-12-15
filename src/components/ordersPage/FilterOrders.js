@@ -21,7 +21,10 @@ export default function FilterOrder(props) {
             }
             console.log("Inside email, filterBY: " + filterBy);
             fetch(`http://localhost:8080/orders?email=${value}`, {
-                method: "GET"
+                method: "GET",
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             }).then((response) => response.json())
                 .then((data) => {
                     setFilteredOrders(data);
@@ -43,7 +46,8 @@ export default function FilterOrder(props) {
                 method: "POST",
                 body: JSON.stringify(jsonBody),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then((response) => response.json())
                 .then((data) => {
