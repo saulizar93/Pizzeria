@@ -38,7 +38,8 @@ export const CustomerForm = ()=>{
             method: "POST",
             body: JSON.stringify(customer),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => {res.json();
         }).then(data => {return data})

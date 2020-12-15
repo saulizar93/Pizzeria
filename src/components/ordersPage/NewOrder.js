@@ -116,7 +116,8 @@ export const NewOrder = (props)=>{
             method: "POST",
             body: JSON.stringify(order),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => {res.json();
         }).then(data => {return data})
