@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
 
     const [userCredentials, setUserCredentials] = useState({
         email: "",
@@ -75,6 +75,7 @@ export default function SignIn() {
         .then( (res)=>{
             console.log(res)
             localStorage.setItem("token",res.response);
+            props.history.push("/")
         })
         .catch( (err)=>console.log(err))
     }

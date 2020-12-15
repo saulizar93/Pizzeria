@@ -58,7 +58,12 @@ export default function OrderPage(){
     }
 
     useEffect( ()=> {
-        fetch('http://localhost:8080/orders')
+        fetch('http://localhost:8080/orders',{
+            method:"GET",
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then( (response)=> response.json())
         .then( (data)=>{
             setOrders(data);
