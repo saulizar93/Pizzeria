@@ -22,7 +22,12 @@ export default function CustomerPage(){
     }
 
     useEffect( ()=> {
-        fetch('http://localhost:8080/customers')
+        fetch('http://localhost:8080/customers',{
+            method:"GET",
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then( (response) => response.json())
         .then( (data)=> {
             setCustomers(data);

@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import NavBar from './NavBar';
 import logo from '../../img/PizzaLogo.PNG';
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
                 <img className={classes.image} src={logo} alt='Pizza'/>
                 {/* <Typography variant="h6" className={classes.title}></Typography> */}
                 <NavBar/> 
-                <Button color="inherit" style={{color:'black'}}><b>LogIn</b></Button>
+                <Link to='/login'><Button color="inherit" style={{color:'black'}}>LogIn</Button></Link>
             </Toolbar>
         </AppBar>
       </div>

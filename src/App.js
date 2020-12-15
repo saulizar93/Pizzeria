@@ -7,12 +7,13 @@ import PizzaPage from './components/pizzaPage/PizzaPage';
 import FilterPizza from './components/pizzaPage/FilterPizza';
 import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
-//import NavBar from './components/navbar/NavBar';
+import LoginPage from './components/loginPage/LoginPage';
 import AppBar from './components/navbar/AppBar';
 import backgroundImage from './img/PizzaBackground.png';
 import FilterOrders from './components/ordersPage/FilterOrders';
 import FilterCustomers from './components/customerPage/FilterCustomers';
 import { NewOrder } from './components/ordersPage/NewOrder';
+
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
     {/* <NavBar></NavBar> */}
     <AppBar/>
     <Switch>
+      <Route path='/login' component={LoginPage} exact />
       <Route path='/' component={HomePage} exact />
       <Route path='/getPizzas' component={PizzaPage} />
       <Route path='/getCustomers' component={CustomerPage} />
