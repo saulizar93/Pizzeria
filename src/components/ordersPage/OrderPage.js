@@ -10,7 +10,12 @@ export default function OrderPage(){
     const [orders, setOrders] = useState([]);
 
     function handleUpdate(order){
-        let newStatus = "READY";
+        let newStatus = "";
+        if(order.status==="PENDING") newStatus="COOKING";
+        else if(order.status==="COOKING")newStatus="READY"
+        else if(order.status==="READY") newStatus="DELIVERING";
+        else if(order.status==="DELIVERING") newStatus="COMPLETED";
+        else if(order.status==="COMPLETED") newStatus="PENDING";
         let customerJSON={
             _id:order.customer._id.hexString
         };
@@ -138,7 +143,8 @@ export default function OrderPage(){
                                 <td>
                                     {formatString(order.status)}
                                     <br/>
-                                    <Button color='danger' onClick={()=>handleUpdate(order)}>Update</Button>
+                                    <br/>
+                                    <Button color='success' onClick={()=>handleUpdate(order)}>Update</Button>
                                 </td>
                                 <td><Button color='danger' onClick={()=>handleRemove(order._id.hexString)}>Delete</Button></td>
                             </tr>
