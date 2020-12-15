@@ -96,7 +96,7 @@ export const NewOrder = (props)=>{
         e.preventDefault()
         let order = {
             customer: customerData? 
-            { _id: customerData._id } : { _id: '5fd79d2381595f52128f2647' },
+            { _id: customerData._id } : { _id: "5fd79013d66bcd35a6fa3d58" },
             pizzeriaId: null,
             pizzas: pizzaList,
             cost: subtotal,

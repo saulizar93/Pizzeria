@@ -9,6 +9,43 @@ export default function OrderPage(){
 
     const [orders, setOrders] = useState([]);
 
+    function handleUpdate(order){
+        let newStatus = "";
+        if(order.status==="PENDING") newStatus="COOKING";
+        else if(order.status==="COOKING")newStatus="READY"
+        else if(order.status==="READY") newStatus="DELIVERING";
+        else if(order.status==="DELIVERING") newStatus="COMPLETED";
+        else if(order.status==="COMPLETED") newStatus="PENDING";
+        let customerJSON={
+            _id:order.customer._id.hexString
+        };
+        let jsonBody={
+            customer: customerJSON,
+            pizzeriaId: order.pizzeriaId,
+            pizzas:order.pizzas,
+            cost:order.cost,
+            tip:order.tip,
+            status:newStatus,
+            type:order.type,
+            deliveryAddress:order.deliveryAddress
+    
+        }
+        console.log(jsonBody);
+        let id = order._id.hexString;
+        fetch(`http://localhost:8080/orders/?_id=${id}`,
+        {
+            method: "PUT",
+            body: JSON.stringify(jsonBody),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then( (response)=>response.json())
+        .then( (data)=>{
+            console.log(data);
+        })
+        .catch( (err)=>console.log(err));
+    }
+
     function handleRemove(id){
         console.log("Deleting: "+id);
         fetch(`http://localhost:8080/orders?_id=${id}`,{
@@ -103,7 +140,12 @@ export default function OrderPage(){
                                     {priceFormat(totalCost(order.pizzas))}
                                 </td>
                                 <td>{formatString(order.type)}</td>
-                                <td>{formatString(order.status)}</td>
+                                <td>
+                                    {formatString(order.status)}
+                                    <br/>
+                                    <br/>
+                                    <Button color='success' onClick={()=>handleUpdate(order)}>Update</Button>
+                                </td>
                                 <td><Button color='danger' onClick={()=>handleRemove(order._id.hexString)}>Delete</Button></td>
                             </tr>
                         )
