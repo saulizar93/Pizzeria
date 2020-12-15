@@ -25,7 +25,8 @@ export default function FilterCustomers(){
             method: "POST",
             body: JSON.stringify(jsonBody),
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then( (response)=> response.json())
         .then( (data)=> {

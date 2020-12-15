@@ -12,7 +12,10 @@ export default function CustomerPage(){
     function handleRemove(id){
         console.log("Deleting: "+id);
         fetch(`http://localhost:8080/customers?_id=${id}`,{
-            method: "DELETE"
+            method: "DELETE",
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         }).then( (response)=>response.json())
         .then((data) =>{
             console.log(data);
