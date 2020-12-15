@@ -22,7 +22,6 @@ export default function CustomerPage(){
     }
 
     useEffect( ()=> {
-        console.log(localStorage.getItem('token'))
         fetch('http://localhost:8080/customers',{
             method:"GET",
             headers:{
