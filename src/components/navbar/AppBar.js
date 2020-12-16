@@ -9,6 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NavBar from './NavBar';
 import logo from '../../img/PizzaLogo.PNG';
 import {Link} from 'react-router-dom';
+import {useDispatch } from 'react-redux';
+import {signin} from '../redux/actions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,12 +34,15 @@ const useStyles = makeStyles((theme) => ({
         resizeMode:'contain'
     }
   }));
+
   
   export default function ButtonAppBar(props) {
     const classes = useStyles();
     const handleChange = ()=>{
         localStorage.clear();
+        dispatch(signin());
     }
+    const dispatch = useDispatch();
   
     return (
       <div className={classes.root}>

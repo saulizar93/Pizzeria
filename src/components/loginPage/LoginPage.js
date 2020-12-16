@@ -3,14 +3,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Checkbox from '@material-ui/core/Checkbox';
-//import Grid from '@material-ui/core/Grid';
-//import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {useDispatch } from 'react-redux';
+import {signin} from '../redux/actions';
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -31,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
+
 
 export default function SignIn(props) {
 
@@ -64,10 +64,11 @@ export default function SignIn(props) {
             console.log(res)
             if(res.response.includes("Username or password is Invalid")){
                 console.log("Wrong input")
-                setResponse(res.response);
+                setResponse("Username or password is invalid");
             }else{
                 localStorage.setItem("token",res.response);
                 localStorage.setItem("isLoggedIn",true);
+                dispatch(signin());
                 setResponse(res.response);
                 props.history.push("/home")
             }
@@ -77,6 +78,7 @@ export default function SignIn(props) {
     }
 
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return (
         <Container component="main" maxWidth="xs">
