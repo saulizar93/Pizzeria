@@ -20,7 +20,7 @@ export const NewOrder = (props)=>{
     const [lName, setLname] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
-    const [orderType, setOrderType] = useState("")
+    const [orderType, setOrderType] = useState("DELIVERY")
     const [subtotal, setSubtotal] = useState(0)
     const [tip, setTip] = useState(0)
     const [pizzaList, setPizzaList] = useState([])
@@ -116,7 +116,10 @@ export const NewOrder = (props)=>{
         setType(e.target.value);
     }
 
-
+    const subtractSubtotal = (c)=>{
+        console.log(c)
+        setSubtotal(Math.abs(subtotal - c))
+    }
     let price = calculateCost(type, size, selectedToppings);
 
     const submitOrder = (e)=>{
@@ -192,7 +195,7 @@ export const NewOrder = (props)=>{
                     <FormGroup row check>
                         <Col>
                             <Label sm={3} check>
-                                <Input onChange={typeChange} type="radio" name="radio1" value="DELIVERY"/>{' '}
+                                <Input onChange={typeChange} defaultChecked type="radio" name="radio1" value="DELIVERY"/>{' '}
                                 Delivery
                             </Label>
                             <Label sm={3}  check>
@@ -209,7 +212,7 @@ export const NewOrder = (props)=>{
                             </Label>
                         </Col>
                     </FormGroup>
-                    <div id="address" row hidden>
+                    <div id="address" row>
                         <FormGroup row>
                             <Col sm={12}>
                             <AvField type="text" name="add1" id="add1" label="Address Line 1" onChange={handleFormChange} disabled={(customerData ? true : false)} value={(customerData.homeAddress ? customerData.homeAddress.streetAddress : address1)}></AvField>
@@ -309,6 +312,10 @@ export const NewOrder = (props)=>{
                                             return formatString(t)+" "
                                         })}</td>
                                         <td>{priceFormat(p.cost)}</td>
+                                        <td><Button color='danger' value={p} onClick={e=>{
+                                            pizzaList.splice(pizzaList.indexOf(e.target.value),1)
+                                            subtractSubtotal(p.cost) 
+                                        }}> x </Button></td>
                                     </tr>
                                 )
                             })}
