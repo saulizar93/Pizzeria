@@ -9,13 +9,9 @@ export default function NavBar(){
     }
     return (
         <Container style={{paddingTop: "10px"}}>
-        {/* <Container> */}
         <Row>
-           
             <Col style={{textAlign: "left"}}>
-                <Link to="/" style={buttonStyle}><Button color="danger">Home</Button></Link>
-                {/* <Link to="/getPizzas" style={buttonStyle}><Button color="danger">Pizzas</Button></Link> 
-                <Link to="/findPizza" style={buttonStyle}><Button color="danger">Find Pizza</Button></Link>    */}
+                <Link to="/home" style={buttonStyle}><Button color="danger">Home</Button></Link>
                 <Link to="/getOrders" style={buttonStyle}><Button color="danger">Orders</Button></Link>
                 <Link to="/findOrders" style={buttonStyle}><Button color="danger">Find Order</Button></Link>
                 <Link to="/getCustomers" style={buttonStyle}><Button color="danger">Customers</Button></Link>
@@ -26,9 +22,6 @@ export default function NavBar(){
             <PhoneIcon style={{color:'black'}}/><b> (619) 541-5365</b>
             </h4>
             </Col>
-            {/* <Col style={{textAlight: "right"}}>
-                <Button color="success">Switch to Employee</Button>
-            </Col> */}
         </Row>
         </Container>
     );
