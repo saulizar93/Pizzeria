@@ -16,13 +16,12 @@ import { NewOrder } from './components/ordersPage/NewOrder';
 
 
 function App() {
+  localStorage.setItem('isLoggedIn',false);
 
-  const isLoggedIn = false;
-  localStorage.setItem('isLoggedIn',isLoggedIn);
   return (
     <div style={{backgroundImage: `url(${backgroundImage})`}}>
-    {localStorage.getItem('isLoggedIn')?<AppBar/>:<LoginPage/>}
-    {/* <AppBar/> */}
+    {/* {localStorage.getItem('isLoggedIn')==="true"?<AppBar/>:null} */}
+    <AppBar/>
     <Switch>
       <Route path='/' component={LoginPage} exact />
       <Route path='/home' component={HomePage} exact />
