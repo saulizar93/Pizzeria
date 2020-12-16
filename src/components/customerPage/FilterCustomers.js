@@ -4,7 +4,7 @@ import { formatString } from '../util/StringFormat';
 
 export default function FilterCustomers(){
 
-    const [filterBy, setFilterBy] = useState("");
+    const [filterBy, setFilterBy] = useState("firstName");
     const [value, setValue] = useState("");
     const [ filteredCustomers, setFilteredCustomers]= useState([]);
 
@@ -43,7 +43,7 @@ export default function FilterCustomers(){
         setValue(e.target.value);
     }
 
-    let form;
+    let form
     if(filterBy==="firstName" || filterBy==="lastName"){
         form=<FormGroup row>
             <Label sm={2} for="value" style={{textAlign:'center', fontFamily:'Monaco',fontWeight:'bold',backgroundColor:'orange'}}>Value</Label>
@@ -83,7 +83,7 @@ export default function FilterCustomers(){
                                 <option value="San Francisco">San Francisco</option>
                                 <option value="San Diego">San Diego</option>
                                 <option value="El Paso">El Paso</option>
-                            </Input>
+            </Input>
             </Col>
         </FormGroup>
     }

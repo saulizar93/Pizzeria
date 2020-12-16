@@ -6,7 +6,7 @@ import { priceFormat } from '../util/PriceFormat';
 
 export default function FilterOrder(props) {
 
-    const [filterBy, setFilterBy] = useState("");
+    const [filterBy, setFilterBy] = useState("status");
     const [value, setValue] = useState("");
     const [filteredOrders, setFilteredOrders] = useState([]);
 
