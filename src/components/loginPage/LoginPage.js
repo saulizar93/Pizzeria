@@ -85,7 +85,7 @@ export default function SignIn(props) {
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" style={{color: 'yellow'}}>
                     Sign in
                 </Typography>
                 <form onSubmit={handleSubmit} onChange={handleChange} className={classes.form} noValidate>
@@ -99,7 +99,7 @@ export default function SignIn(props) {
                         name="email"
                         autoComplete="email"
                         autoFocus
-                        style={{ backgroundColor: 'red' }}
+                        style={{ backgroundColor: 'white' }}
                     />
                     <TextField
                         variant="outlined"
@@ -111,7 +111,7 @@ export default function SignIn(props) {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                        style={{ backgroundColor: 'red' }}
+                        style={{ backgroundColor: 'white' }}
                     />
                     <Button
                         type="submit"
