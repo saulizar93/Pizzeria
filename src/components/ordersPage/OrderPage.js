@@ -5,6 +5,7 @@ import {formatString} from '../util/StringFormat';
 import { NewOrder } from '../ordersPage/NewOrder'
 import {Button} from 'reactstrap';
 
+
 export default function OrderPage(){
 
     const [orders, setOrders] = useState([]);
@@ -76,12 +77,12 @@ export default function OrderPage(){
         .catch( (err)=> console.log(err));
     },[orders])
 
-    let totalCost = ( (pizzaItem)=>{
+    let totalCost = ( (pizzaItem, tip)=>{
         let sum = 0;
         for(let i=0; i<pizzaItem.length;i++){
             sum = sum + pizzaItem[i].cost;
         }
-        return sum;
+        return sum+tip;
     })
 
     return(
@@ -146,7 +147,7 @@ export default function OrderPage(){
                                     </ol>
                                 </td>
                                 <td>
-                                    {priceFormat(totalCost(order.pizzas))}
+                                    {priceFormat(totalCost(order.pizzas, order.tip))}
                                 </td>
                                 <td>{formatString(order.type)}</td>
                                 <td>

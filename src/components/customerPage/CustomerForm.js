@@ -84,13 +84,13 @@ export const CustomerForm = ()=>{
                 <Col sm={4}>
                     <AvField id='first' type='text' name='firstName' value={fName} onChange={handleFormChange} validate={{
                         required: {value: true}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
                 <Label sm={2} for='last' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>Last Name</Label>
                 <Col sm={4}>
                     <AvField id='last' type='text' name='lastName' value={lName} onChange={handleFormChange} validate={{
                         required: {value: true}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -99,7 +99,7 @@ export const CustomerForm = ()=>{
                     <AvField id='email' type='text' name='email' value={email} onChange={handleFormChange} validate={{
                         required: {value: true},
                         email: true
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -109,7 +109,7 @@ export const CustomerForm = ()=>{
                         required: {value: true},
                         minLength: {value: 6, errorMessage: "Password must be between 6 and 16 characters"},
                         maxLength: {value: 16, errorMessage: "Password must be between 6 and 16 characters"}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
                 <Label sm={2} for='confirmPassword' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>Confirm Password</Label>
                 <Col sm={4}>
@@ -118,7 +118,7 @@ export const CustomerForm = ()=>{
                         match: {value: 'password', errorMessage: "Passwords do not match"},
                         minLength: {value: 6, errorMessage: "Password must be between 6 and 16 characters"},
                         maxLength: {value: 16, errorMessage: "Password must be between 6 and 16 characters"}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -127,7 +127,7 @@ export const CustomerForm = ()=>{
                     <AvField id='address1' type='text' name='address1' value={address1} onChange={handleFormChange} validate={{
                         required: {value: true},
                         pattern: {value: '^[^- ][A-Za-z0-9 ]+$'}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -135,7 +135,7 @@ export const CustomerForm = ()=>{
                 <Col sm={10}>
                     <AvField id='address2' type='text' name='address2' value={address2} onChange={handleFormChange} validate={{
                         pattern: {value: '^[A-Za-z0-9 ]+$'}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -144,11 +144,11 @@ export const CustomerForm = ()=>{
                     <AvField id='city' type='text' name='city' value={city} onChange={handleFormChange} validate={{
                         required: {value: true},
                         pattern: {value: '^[A-Za-z0-9 ]+$'}
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }}></AvField>
                 </Col>
                 <Label sm={2} for='state' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>State</Label>
                 <Col sm={2}>
-                    <AvField type='select' id='state' name='state' value={state} onChange={handleFormChange} required style={{backgroundColor:'red'}}>
+                    <AvField type='select' id='state' name='state' value={state} onChange={handleFormChange} required>
                         {states.map(s=>{
                             return <option key={s.abv} value={s.abv}>{s.name}</option>
                         })}
@@ -163,13 +163,13 @@ export const CustomerForm = ()=>{
                         minLength: {value: 5},
                         maxLength: {value: 5},
                         max: {value: '99999', errorMessage: "Invalid Zip Code"},
-                    }} style={{backgroundColor:'red'}}></AvField>
+                    }} ></AvField>
                 </Col>
             </FormGroup>
             <FormGroup row>
                 <Label sm={2} for='phone' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>Phone Number</Label>
                 <Col sm={10}>
-                    <PhoneAvField defaultCountry="US" value={phone} onChange={setPhone} required style={{backgroundColor:'red'}}></PhoneAvField>
+                    <PhoneAvField defaultCountry="US" value={phone} onChange={setPhone} required ></PhoneAvField>
                 </Col>
             </FormGroup>
             <FormGroup row>

@@ -34,7 +34,7 @@ export default function CustomerPage(){
         .then( (response) => response.json())
         .then( (data)=> {
             setCustomers(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch( (err)=> console.log(err));
     },[customers])
@@ -84,8 +84,8 @@ export default function CustomerPage(){
                     })}
                 </tbody>
             </Table>
-
-            <Card><br/><CustomerForm /></Card>
+            <br/>
+            <CustomerForm />
         </Container>
     )
 }
