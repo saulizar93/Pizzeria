@@ -81,7 +81,7 @@ export default function SignIn(props) {
     const dispatch = useDispatch();
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container style={{backgroundColor: 'rgba(100,100,100,0.5)'}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>

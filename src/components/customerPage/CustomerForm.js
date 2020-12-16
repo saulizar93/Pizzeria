@@ -51,7 +51,7 @@ export const CustomerForm = ()=>{
             streetAddress: address1,
             streetAddressLine2: address2,
             city: city,
-            state: state,
+            state: states.find((x)=>x.abv===state).name,
             postal: zip
         }
         return address;
