@@ -10,7 +10,6 @@ import 'react-phone-number-input/style.css'
 import CurrencyInput from 'react-currency-input'
 import { states } from '../util/states'
 import { toppings } from '../util/toppings'
-import Async, { useFetch } from 'react-async'
 import jwt_decode from 'jwt-decode'
 import { heightCheck } from '../util/heightCheck'
 
