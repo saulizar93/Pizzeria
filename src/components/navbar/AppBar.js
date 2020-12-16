@@ -33,8 +33,11 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
   
-  export default function ButtonAppBar() {
+  export default function ButtonAppBar(props) {
     const classes = useStyles();
+    const handleChange = ()=>{
+        localStorage.clear();
+    }
   
     return (
       <div className={classes.root}>
@@ -44,9 +47,8 @@ const useStyles = makeStyles((theme) => ({
                 
                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"><MenuIcon /></IconButton>
                 <img className={classes.image} src={logo} alt='Pizza'/>
-                {/* <Typography variant="h6" className={classes.title}></Typography> */}
                 <NavBar/> 
-                <Link to='/login'><Button color="inherit" style={{color:'black'}}>LogIn</Button></Link>
+                <Link to='/'><Button color="inherit" onClick={handleChange} style={{color:'black'}}>LogOut</Button></Link>
             </Toolbar>
         </AppBar>
       </div>

@@ -16,29 +16,15 @@ import { NewOrder } from './components/ordersPage/NewOrder';
 
 
 function App() {
+  localStorage.setItem('isLoggedIn',false);
+
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
     <div style={{backgroundImage: `url(${backgroundImage})`}}>
-    {/* <NavBar></NavBar> */}
+    {/* {localStorage.getItem('isLoggedIn')==="true"?<AppBar/>:null} */}
     <AppBar/>
     <Switch>
-      <Route path='/login' component={LoginPage} exact />
-      <Route path='/' component={HomePage} exact />
+      <Route path='/' component={LoginPage} exact />
+      <Route path='/home' component={HomePage} exact />
       <Route path='/getPizzas' component={PizzaPage} />
       <Route path='/getCustomers' component={CustomerPage} />
       <Route path='/findCustomers' component={FilterCustomers}/>
