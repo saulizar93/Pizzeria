@@ -38,6 +38,7 @@ export default function SignIn(props) {
         email: "",
         password: ""
     })
+    const [response, setResponse] = useState("");
 
     function handleChange(e){
         setUserCredentials({
@@ -61,9 +62,16 @@ export default function SignIn(props) {
         }).then( (res)=>res.json())
         .then( (res)=>{
             console.log(res)
-            localStorage.setItem("token",res.response);
-            localStorage.setItem("isLoggedIn",true);
-            props.history.push("/home")
+            if(res.response.includes("Username or password is Invalid")){
+                console.log("Wrong input")
+                setResponse(res.response);
+            }else{
+                localStorage.setItem("token",res.response);
+                localStorage.setItem("isLoggedIn",true);
+                setResponse(res.response);
+                props.history.push("/home")
+            }
+            
         })
         .catch( (err)=>console.log(err))
     }
@@ -115,6 +123,7 @@ export default function SignIn(props) {
                         Sign In
                     </Button>
                 </form>
+                <h6 style={{backgroundColor:'red'}}>{response}</h6>
             </div>
             <br />
             <br />
