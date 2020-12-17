@@ -1,4 +1,3 @@
-import { Card } from '@material-ui/core';
 import React, { useState, useEffect} from 'react';
 import {Table, Container} from 'reactstrap';
 import { formatString } from '../util/StringFormat';
