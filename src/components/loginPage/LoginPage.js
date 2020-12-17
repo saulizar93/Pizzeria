@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useDispatch } from 'react-redux';
 import {signin} from '../redux/actions';
+import { CustomerForm } from '../customerPage/CustomerForm'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -80,7 +81,13 @@ export default function SignIn(props) {
     const classes = useStyles();
     const dispatch = useDispatch();
 
+    function showReg(){
+        document.getElementById("reg").hidden = false;
+        document.getElementById("reg").scrollIntoView({behavior: "smooth"})
+    }
+
     return (
+        <div>
         <Container style={{backgroundColor: 'rgba(100,100,100,0.5)'}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -124,6 +131,14 @@ export default function SignIn(props) {
                     >
                         Sign In
                     </Button>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="secondary"
+                        onClick={showReg}
+                    >
+                        Register
+                    </Button>
                 </form>
                 <h6 style={{backgroundColor:'red'}}>{response}</h6>
             </div>
@@ -138,5 +153,9 @@ export default function SignIn(props) {
             <br />
             <br />
         </Container>
+        <div id="reg" hidden>
+            <CustomerForm/>
+        </div>
+        </div>
     );
 }
