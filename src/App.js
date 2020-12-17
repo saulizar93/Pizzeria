@@ -1,7 +1,6 @@
 import React from 'react';
-import {Switch,Route} from 'react-router-dom';
+import {Switch,Route, Redirect} from 'react-router-dom';
 import HomePage from './components/homePage/HomePage';
-import PizzaPage from './components/pizzaPage/PizzaPage';
 import FilterPizza from './components/pizzaPage/FilterPizza';
 import CustomerPage from './components/customerPage/CustomerPage';
 import OrderPage from './components/ordersPage/OrderPage';
@@ -14,9 +13,19 @@ import { NewOrder } from './components/ordersPage/NewOrder';
 import {useSelector} from 'react-redux';
 
 
+
 function App() {
 
   const isLogged = useSelector(state=>state.isLogged);
+
+  function ProtectedRoute ({component:Component, ...rest}){
+
+    return (
+      <Route {...rest} render={(props)=>{
+        return isLogged? <Component {...props}/>:<Redirect to='/' />
+      }}/>
+    )
+  }
   return (
     <div style={{backgroundImage: `url(${backgroundImage})`}}>
     {isLogged?<AppBar/>:null}
@@ -24,14 +33,13 @@ function App() {
     <Switch>
       <Route path='/' component={LoginPage} exact />
       <Route path='/home' component={HomePage} exact />
-      <Route path='/getPizzas' component={PizzaPage} exact/>
-      <Route path='/getCustomers' component={CustomerPage} exact/>
-      <Route path='/findCustomers' component={FilterCustomers} exact/>
-      <Route path='/getOrders' component={OrderPage} exact/>
-      <Route path='/findPizza' component={FilterPizza} exact/>
-      <Route path='/findOrders' component={FilterOrders} exact/>
-      <Route path='/newOrder' component={NewOrder} exact />
-      <Route path='/**' component={()=><h1 style={{textAlign:'center'}}>404 not found</h1>}/>
+      <ProtectedRoute path='/getCustomers' component={CustomerPage} exact/>
+      <ProtectedRoute path='/findCustomers' component={FilterCustomers} exact/>
+      <ProtectedRoute path='/getOrders' component={OrderPage} exact/>
+      <ProtectedRoute path='/findPizza' component={FilterPizza} exact/>
+      <ProtectedRoute path='/findOrders' component={FilterOrders} exact/>
+      <ProtectedRoute path='/newOrder' component={NewOrder} exact />
+      <ProtectedRoute path='/**' component={()=><h1 style={{textAlign:'center'}}>404 not found</h1>}/>
     </Switch>
     </div>
   );
