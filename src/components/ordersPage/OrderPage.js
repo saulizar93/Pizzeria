@@ -85,27 +85,9 @@ export default function OrderPage(){
         return sum+tip;
     })
 
-    return(
-        <div>
-        <Container>
-            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> Pizza Orders </h1>
-            <Table hover bordered className='table'>
-                <thead>
-                    <tr style={{backgroundColor:'red'}}> 
-                        <th>Customer Name</th>
-                        <th>Orders</th>
-                        <th>Pizza Type</th>
-                        <th>Toppings</th>
-                        <th>Size</th>
-                        <th>Individual Costs</th>
-                        <th>Total Cost</th>
-                        <th>Order Type</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map( (order)=>{
+    function mapOrdersToTableRows(ordersArr){
+        return <React.Fragment>
+            {ordersArr.map( (order)=>{
                         return(
                             <tr key={order._id.hexString} style={{backgroundColor:'orange'}}>
                                 <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
@@ -160,6 +142,47 @@ export default function OrderPage(){
                             </tr>
                         )
                     })}
+        </React.Fragment>
+    }
+
+    function getEmptyRow(){
+        return <React.Fragment>
+            <tr style={{backgroundColor:'orange'}}>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </React.Fragment>
+    }
+
+    return(
+        <div>
+        <Container>
+            <h1 style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold'}}> Pizza Orders </h1>
+            <Table hover bordered className='table'>
+                <thead>
+                    <tr style={{backgroundColor:'red'}}> 
+                        <th>Customer Name</th>
+                        <th>Orders</th>
+                        <th>Pizza Type</th>
+                        <th>Toppings</th>
+                        <th>Size</th>
+                        <th>Individual Costs</th>
+                        <th>Total Cost</th>
+                        <th>Order Type</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {(Array.isArray(orders) && orders.length) ? mapOrdersToTableRows(orders) : getEmptyRow()}
                 </tbody>
             </Table>
         </Container>

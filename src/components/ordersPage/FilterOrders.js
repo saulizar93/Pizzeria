@@ -71,6 +71,80 @@ export default function FilterOrder(props) {
         return sum;
     })
 
+    function mapOrdersToTableRows(ordersArr){
+        return (<React.Fragment>
+            {ordersArr.map((order) => {
+                        return (
+                            <tr key={order._id.hexString} style={{ backgroundColor: 'orange' }}>
+                                <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
+                                <td>{formatString(order.customer.email)}</td>
+                                <td>{order.customer.homeAddress.streetAddress} {order.customer.homeAddress.city} {order.customer.homeAddress.state} {order.customer.homeAddress.postal}</td>
+                                <td>{order.pizzas.length}</td>
+                                <td>
+                                    <ol style={{ paddingLeft: 15 }}>
+                                        {order.pizzas.map((pizzaItem) => {
+                                            return (
+                                                <li>{formatString(pizzaItem.type)}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{ paddingLeft: 15 }}>
+                                        {order.pizzas.map((pizzaItem) => {
+                                            return (
+                                                <li>{formatString(pizzaItem.toppings.toString())}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{ paddingLeft: 15 }}>
+                                        {order.pizzas.map((pizzaItem) => {
+                                            return (
+                                                <li>{formatString(pizzaItem.size)}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol style={{ paddingLeft: 15 }}>
+                                        {order.pizzas.map((pizzaItem) => {
+                                            return (
+                                                <li>{priceFormat(pizzaItem.cost)}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </td>
+                                <td>
+                                    {priceFormat(totalCost(order.pizzas))}
+                                </td>
+                                <td>{formatString(order.type)}</td>
+                                <td>{formatString(order.status)}</td>
+                            </tr>
+                        )
+                    })}
+        </React.Fragment>);
+    }
+
+    function getEmptyRow(){
+        return <React.Fragment>
+            <tr style={{backgroundColor:'orange'}}>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </React.Fragment>
+    }
+
     let form;
     if (filterBy === "status") {
         form = <FormGroup row>
@@ -134,57 +208,7 @@ export default function FilterOrder(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredOrders.map((order) => {
-                        return (
-                            <tr key={order._id.hexString} style={{ backgroundColor: 'orange' }}>
-                                <td>{formatString(order.customer.firstName)} {formatString(order.customer.lastName)}</td>
-                                <td>{formatString(order.customer.email)}</td>
-                                <td>{order.customer.homeAddress.streetAddress} {order.customer.homeAddress.city} {order.customer.homeAddress.state} {order.customer.homeAddress.postal}</td>
-                                <td>{order.pizzas.length}</td>
-                                <td>
-                                    <ol style={{ paddingLeft: 15 }}>
-                                        {order.pizzas.map((pizzaItem) => {
-                                            return (
-                                                <li>{formatString(pizzaItem.type)}</li>
-                                            )
-                                        })}
-                                    </ol>
-                                </td>
-                                <td>
-                                    <ol style={{ paddingLeft: 15 }}>
-                                        {order.pizzas.map((pizzaItem) => {
-                                            return (
-                                                <li>{formatString(pizzaItem.toppings.toString())}</li>
-                                            )
-                                        })}
-                                    </ol>
-                                </td>
-                                <td>
-                                    <ol style={{ paddingLeft: 15 }}>
-                                        {order.pizzas.map((pizzaItem) => {
-                                            return (
-                                                <li>{formatString(pizzaItem.size)}</li>
-                                            )
-                                        })}
-                                    </ol>
-                                </td>
-                                <td>
-                                    <ol style={{ paddingLeft: 15 }}>
-                                        {order.pizzas.map((pizzaItem) => {
-                                            return (
-                                                <li>{priceFormat(pizzaItem.cost)}</li>
-                                            )
-                                        })}
-                                    </ol>
-                                </td>
-                                <td>
-                                    {priceFormat(totalCost(order.pizzas))}
-                                </td>
-                                <td>{formatString(order.type)}</td>
-                                <td>{formatString(order.status)}</td>
-                            </tr>
-                        )
-                    })}
+                    {(Array.isArray(filteredOrders) && filteredOrders.length) ? mapOrdersToTableRows(filteredOrders) : getEmptyRow() }
                 </tbody>
             </Table>
             {/* </Container> */}
