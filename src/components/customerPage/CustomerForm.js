@@ -21,8 +21,12 @@ export const CustomerForm = ()=>{
 
     const [phone, setPhone] = useState("");
     
+    function handleSubmit(e, err, val){
+        if(err.length === 0) validateForm(e);
+    }
 
     const validateForm = (e)=>{
+        console.log("validating")
         let address = generateAddress();
         let customer = {
             firstName: fName,
@@ -39,11 +43,12 @@ export const CustomerForm = ()=>{
             body: JSON.stringify(customer),
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => {res.json();
         }).then(data => {return data})
-        .catch((e)=>{return e});
+        .catch((err)=>{return err});
+
+        document.getElementById("success").hidden = false;
     }
 
     const generateAddress = ()=>{
@@ -75,10 +80,10 @@ export const CustomerForm = ()=>{
     }
     return (
         <Card style={{backgroundColor:'orange'}}>
-            <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Add Customer</CardTitle>
+            <CardTitle style={{textAlign:'center', fontFamily:'Monaco', fontWeight:'bold', backgroundColor:'red'}}>Register</CardTitle>
         <Container style={{backgroundColor:'orange'}}>
             <br/>
-        <AvForm >
+        <AvForm onSubmit={handleSubmit} >
             <FormGroup row > 
                 <Label sm={2} for='first' style={{ textAlign: 'center', fontFamily: 'Monaco', fontWeight: 'bold', backgroundColor: 'orange' }}>First Name</Label>
                 <Col sm={4}>
@@ -173,9 +178,10 @@ export const CustomerForm = ()=>{
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Button color='danger' style={{marginLeft: '30px'}} onClick={validateForm}>Create Customer</Button>
+                <Button color='danger' style={{marginLeft: '30px'}}>Create Customer</Button>
             </FormGroup>
         </AvForm>
+        <h6 id="success" hidden>Customer created successfully. Please sign in</h6>
         <br/>
         </Container>
         </Card>

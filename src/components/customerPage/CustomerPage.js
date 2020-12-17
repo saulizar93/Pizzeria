@@ -84,7 +84,6 @@ export default function CustomerPage(){
                 </tbody>
             </Table>
             <br/>
-            <CustomerForm />
         </Container>
     )
 }
