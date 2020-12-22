@@ -24,7 +24,7 @@ export default function CustomerPage(){
     // }
 
     useEffect( ()=> {
-        fetch('http://localhost:8080/customers',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/customers',{
             method:"GET",
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`

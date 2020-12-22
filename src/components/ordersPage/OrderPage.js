@@ -33,7 +33,7 @@ export default function OrderPage(){
         }
         console.log(jsonBody);
         let id = order._id.hexString;
-        fetch(`http://localhost:8080/orders/?_id=${id}`,
+        fetch(`http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders/?_id=${id}`,
         {
             method: "PUT",
             body: JSON.stringify(jsonBody),
@@ -50,7 +50,7 @@ export default function OrderPage(){
 
     function handleRemove(id){
         console.log("Deleting: "+id);
-        fetch(`http://localhost:8080/orders?_id=${id}`,{
+        fetch(`http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders?_id=${id}`,{
             method: "DELETE",
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -63,7 +63,7 @@ export default function OrderPage(){
     }
 
     useEffect( ()=> {
-        fetch('http://localhost:8080/orders',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders',{
             method:"GET",
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`

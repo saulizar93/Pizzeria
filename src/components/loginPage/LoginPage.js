@@ -51,7 +51,7 @@ export default function SignIn(props) {
         e.preventDefault();
         console.log(userCredentials);
 
-        fetch('http://localhost:8080/auth',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/auth',{
             method: 'POST',
             body: JSON.stringify({
                 email:userCredentials.email,

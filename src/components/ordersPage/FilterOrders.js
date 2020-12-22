@@ -20,7 +20,7 @@ export default function FilterOrder(props) {
                 return;
             }
             console.log("Inside email, filterBY: " + filterBy);
-            fetch(`http://localhost:8080/orders?email=${value}`, {
+            fetch(`http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders?email=${value}`, {
                 method: "GET",
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ export default function FilterOrder(props) {
             console.log("Value: " + value);
             jsonBody[filterBy] = value;
 
-            fetch('http://localhost:8080/orders/examples', {
+            fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders/examples', {
                 method: "POST",
                 body: JSON.stringify(jsonBody),
                 headers: {

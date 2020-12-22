@@ -21,7 +21,7 @@ export default function FilterCustomers(){
             jsonBody[filterBy]=value;
         }
 
-        fetch('http://localhost:8080/customers/examples',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/customers/examples',{
             method: "POST",
             body: JSON.stringify(jsonBody),
             headers:{

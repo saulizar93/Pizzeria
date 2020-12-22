@@ -51,7 +51,7 @@ export const NewOrder = (props)=>{
         }
     }
         const body = jwt_decode(localStorage.getItem("token"))["sub"];
-        const customerData = fetch(`http://localhost:8080/customers/email?email=${body}`,{
+        const customerData = fetch(`http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/customers/email?email=${body}`,{
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -142,7 +142,7 @@ export const NewOrder = (props)=>{
             } : null
         }
 
-        fetch('http://localhost:8080/orders',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/orders',{
             method: "POST",
             body: JSON.stringify(order),
             headers: {

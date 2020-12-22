@@ -38,7 +38,7 @@ export const CustomerForm = ()=>{
             card: null
         }
         console.log(customer);
-        fetch('http://localhost:8080/customers',{
+        fetch('http://ec2-3-140-190-217.us-east-2.compute.amazonaws.com:8081/customers',{
             method: "POST",
             body: JSON.stringify(customer),
             headers: {
